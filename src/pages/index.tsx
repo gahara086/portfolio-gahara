@@ -7,7 +7,8 @@ import WorkExperience from '../components/WorkExperience';
 // import Experience from '../components/Experience';
 // import Projects from '../components/Projects';
 // import Expertise from '../components/Expertise';
-// import Hobbies from '../components/Hobbies';
+import Qualification from '../components/Qualification';
+import Hobbies from '../components/Hobbies';
 import Education from '../components/Education';
 // import MapApp from '../components/MapApp';
 
@@ -23,11 +24,13 @@ const Home: NextPage = () => {
       {/* <Projects /> */}
       {/* <Expertise /> */}
       <Education />
-      {/* <Hobbies />  */}
+      <Qualification />
+      <Hobbies /> 
       {/* <MapApp />  */}
-      {/* 趣味はEducationコンポーネントと似たような感じで作ればよいか...？ */}
+      {/*  */}
     </div>
   );
+  
 };
 
 export default Home;
