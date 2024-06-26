@@ -1,63 +1,53 @@
-import { Grid, Paper, Typography, Box } from '@mui/material';
-
-
+import React from 'react';
+import { Box, Typography, Avatar, IconButton } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import ArticleIcon from '@mui/icons-material/Article'; // Qiitaのアイコンが直接はないため、ArticleIconを代用します
 
 const HomePage = () => {
   return (
-    <Box sx={{ my: 4,  py: 3, flexGrow: 1, overflow: 'hidden', padding: 2 }}>
-      <Paper elevation={4}>
-        {/* このPaperで背景が変わってる */}
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <img
-              src="/profile.jpg"
-              alt="Random"
-              style={{ width: '10', height: '10' }}
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Typography variant="h5" component="h2">
-              タイトル
-            </Typography>
-            <Typography variant="body1">
-              説明文
-            </Typography>
-          </Grid>
-        </Grid>
-      </Paper>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundImage: 'url(/path/to/background-image.jpg)',
+        backgroundSize: 'cover',
+        margin: 4 // 他のコンポーネントとの間にスペースを確保
+      }}
+    >
+      <Box
+        sx={{
+          width: '1000px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          padding: '20px',
+          borderRadius: '10px',
+          boxShadow: '0 3px 6px rgba(0,0,0,0.23)', // 影を追加して立体感を出す
+          mb: 0.5 // 下にスペースを確保
+        }}
+      >
+        <Avatar
+          src="/path/to/your-avatar.jpg"
+          sx={{ width: 90, height: 90, mb: 2 }}
+        />
+        <Typography variant="h4" sx={{ color: '#fff', mb: 1 }}>
+          名前苗字
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <IconButton href="https://github.com/yourusername" aria-label="GitHub">
+            <GitHubIcon sx={{ color: '#fff' }} />
+          </IconButton>
+          <IconButton href="https://qiita.com/yourusername" aria-label="Qiita">
+            <ArticleIcon sx={{ color: '#fff' }} />
+          </IconButton>
+        </Box>
+      </Box>
     </Box>
-  // ------------------------------------------------------
-    // <Container>
-    //   <Box sx={{ my: 4,  py: 3 ,textAlign: 'center' }}>{/* 上下のマージン(my)とパディング(py)を調整 */}
-    //     <Box sx={{ position: 'relative', width: '10%', height: 0, marginTop: 4 }}>
-    //       <Image
-    //         src="/profile.jpg"
-    //         alt="Profile Photo"
-    //         width={10} // 画像の実際の幅
-    //         height={10} // 画像の実際の高さ
-    //         layout="responsive"
-    //         objectFit="cover" // ここで画像のフィット方法を指定
-    //       />
-    //     </Box>
-    //   <Typography variant="h5" component="h1" gutterBottom>
-    //       <ThemeProvider theme={theme}>
-    //         名前 苗字
-    //       </ThemeProvider>
-    //       名前 苗字
-
-    //     </Typography>
-    //     <Typography variant="subtitle1" gutterBottom>
-    //       自己紹介の文章
-    //     </Typography>
-    //     <Typography variant="body1">
-    //       : <Link href="example.com">your.email@example.com</Link> /
-    //       <Link href="https://www.linkedin.com/in/yourprofile">LinkedIn Profile</Link>
-    //       /atcorder account
-    //     </Typography>
-    //   </Box>
-    // </Container>
   );
 };
 
 export default HomePage;
-
