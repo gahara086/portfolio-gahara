@@ -1,18 +1,6 @@
-import { createTheme,ThemeProvider, Grid, Paper ,Typography, Container, Box, Link } from '@mui/material';
+import { Grid, Paper, Typography, Box } from '@mui/material';
 
-import Image from 'next/image';
 
-const theme = createTheme({
-  typography: {
-    fontFamily: [
-      'Noto Sans JP',
-      'Roboto', // フォールバック用のフォントも指定
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif'
-    ].join(','),
-  },
-});
 
 const HomePage = () => {
   return (
