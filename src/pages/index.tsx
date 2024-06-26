@@ -3,13 +3,13 @@ import HomePage from '../components/HomePage';
 import AboutMe from '../components/AboutMe';
 import ProfessionalSkills from '../components/ProfessionalSkills';
 import WorkExperience from '../components/WorkExperience';
-import Skills from '../components/Skills';
-import Experience from '../components/Experience';
-import Projects from '../components/Projects';
-import Expertise from '../components/Expertise';
-import Hobbies from '../components/Hobbies';
+// import Skills from '../components/Skills';
+// import Experience from '../components/Experience';
+// import Projects from '../components/Projects';
+// import Expertise from '../components/Expertise';
+// import Hobbies from '../components/Hobbies';
 import Education from '../components/Education';
-import MapApp from '../components/MapApp';
+// import MapApp from '../components/MapApp';
 
 const Home: NextPage = () => {
   return (
