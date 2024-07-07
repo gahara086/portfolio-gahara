@@ -1,58 +1,103 @@
 import React from 'react';
-import { Box, Typography, Paper,  } from '@mui/material';
-import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from '@mui/lab';
+import { Box, Typography, Paper, Grow } from '@mui/material';
+import { School as SchoolIcon, EmojiEvents as HighSchoolIcon, Engineering as UniversityIcon } from '@mui/icons-material';
+import { Timeline, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from '@mui/lab';
+import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 
 interface Education {
   degree: string;
   school: string;
   period: string;
   description: string;
+  icon: React.ReactElement;
+  thesis?: {
+    title: string;
+    summary: string;
+  };  // 卒論のタイトルと内容を詳細に記述
 }
 
 const educationHistory: Education[] = [
   {
-    degree: 'Masters in Information Technology',
-    school: 'International University',
-    period: '2011 - 2013',
-    description: 'Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.'
+    degree: '情報工学',
+    school: '大学',
+    period: '2014 - 2019',
+    description: '情報工学を専攻',
+    thesis: {
+      title: '深層強化学習を使用したビデオゲームプレイヤーの作成',
+      summary: 'シミュレーション環境「OpenAI Gym」を使用して、ビデオゲーム「pacman」のプレイヤーを作成しました。深層強化学習を採用し、高度な決定能力を有するプレイヤーの開発を目指しました。'
+    },
+    icon: <UniversityIcon />
   },
   {
-    degree: 'Bachelor of Computer Science',
-    school: 'Regional College',
-    period: '2007 - 2011',
-    description: 'Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.'
+    degree: '教養',
+    school: '高校',
+    period: '2011 - 2014',
+    description: '一般教養を学習',
+    icon: <HighSchoolIcon />
   },
   {
-    degree: 'Science and Mathematics',
-    school: 'Mt. High School',
-    period: '1995 - 2007',
-    description: 'User generated content in real-time will have multiple touchpoints for offshoring. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.'
+    degree: '教養',
+    school: '中学',
+    period: '2008 - 2011',
+    description: '一般教養を学習',
+    icon: <SchoolIcon />
   }
 ];
 
 const Education: React.FC = () => {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
-      <Paper elevation={3} sx={{ width: 1000, padding: 2 }}>
-        <Typography variant="h4" sx={{ textAlign: 'center', margin: 2 }}>
-          Education
-        </Typography>
-        <Timeline position="alternate">
-          {educationHistory.map((edu, index) => (
-            <TimelineItem key={index}>
-              <TimelineSeparator>
-                <TimelineDot />
-                {index !== educationHistory.length - 1 && <TimelineConnector />}
-              </TimelineSeparator>
-              <TimelineContent sx={{ py: '12px', px: 2 }}>
-                <Typography variant="h6" color="primary.main">{edu.degree} from {edu.school}</Typography>
-                <Typography variant="subtitle2">{edu.period}</Typography>
-                <Typography>{edu.description}</Typography>
-              </TimelineContent>
-            </TimelineItem>
-          ))}
-        </Timeline>
-      </Paper>
+    // <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddding: 4,
+        marginBottom: 4 
+      }}
+    >
+      <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
+        {/* <Paper elevation={6} sx={{ maxWidth: 960, width: '100%', padding: 4, backgroundColor: '#fafafa' }}> */}
+        <Paper
+          elevation={6}
+          sx={{
+            maxWidth: 1000,
+            width: '100%',
+            flexDirection: 'row', // 列から行へ変更
+            p: 4,
+            backgroundColor: '#fafafa'
+          }}
+        >
+          <Typography variant="h5" sx={{ textAlign: 'center', margin: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+            <SchoolIcon />
+            学歴
+          </Typography>
+          <Timeline sx={{ [`& .${timelineItemClasses.root}:before`]: { flex: 0, padding: 0 } }}>
+            {educationHistory.map((edu, index) => (
+              <TimelineItem key={index}>
+                <TimelineSeparator>
+                  <TimelineDot color="primary">
+                    {edu.icon}
+                  </TimelineDot>
+                  {index !== educationHistory.length - 1 && <TimelineConnector />}
+                </TimelineSeparator>
+                <TimelineContent sx={{ py: '12px', px: 2 }}>
+                  <Typography variant="h5" color="primary.main">{edu.school}</Typography>
+                  <Typography variant="h6" color="primary.main">{edu.degree}</Typography>
+                  <Typography variant="subtitle2">{edu.period}</Typography>
+                  <Typography>{edu.description}</Typography>
+                  {edu.thesis && (
+                    <>
+                      <Typography sx={{ mt: 1, fontWeight: 'bold' }}>卒論タイトル: {edu.thesis.title}</Typography>
+                      <Typography sx={{ mt: 0.5 }}>卒論概要: {edu.thesis.summary}</Typography>
+                    </>
+                  )}
+                </TimelineContent>
+              </TimelineItem>
+            ))}
+          </Timeline>
+        </Paper>
+      </Grow>
     </Box>
   );
 };

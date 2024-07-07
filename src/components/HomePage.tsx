@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Typography, Avatar, IconButton } from '@mui/material';
+import { Box, Typography, Avatar, IconButton, Tooltip } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import ArticleIcon from '@mui/icons-material/Article'; // Qiitaのアイコンが直接はないため、ArticleIconを代用します
+import EmailIcon from '@mui/icons-material/Email'; // Emailアイコンを追加
 
 const HomePage = () => {
   return (
@@ -18,7 +19,8 @@ const HomePage = () => {
     >
       <Box
         sx={{
-          width: '1000px',
+            maxWidth: 1000,
+            width: '100%',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -38,12 +40,51 @@ const HomePage = () => {
           名前苗字
         </Typography>
         <Box sx={{ display: 'flex', gap: 2 }}>
-          <IconButton href="https://github.com/yourusername" aria-label="GitHub">
-            <GitHubIcon sx={{ color: '#fff' }} />
-          </IconButton>
-          <IconButton href="https://qiita.com/yourusername" aria-label="Qiita">
-            <ArticleIcon sx={{ color: '#fff' }} />
-          </IconButton>
+          <Tooltip title="GitHub" arrow>
+            <IconButton 
+              href="https://github.com/yourusername" 
+              aria-label="GitHub"
+              sx={{ 
+                '&:hover': {
+                  transform: 'scale(1.1)',
+                  transition: 'transform 0.3s ease-in-out',
+                  color: '#FFD700' // ホバー時の色をゴールドに変更
+                }
+              }}
+            >
+              <GitHubIcon sx={{ color: '#fff' }} />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Qiita" arrow>
+            <IconButton 
+              href="https://qiita.com/yourusername" 
+              aria-label="Qiita"
+              sx={{ 
+                '&:hover': {
+                  transform: 'scale(1.1)',
+                  transition: 'transform 0.3s ease-in-out',
+                  color: '#FFD700' // ホバー時の色をゴールドに変更
+                }
+              }}
+            >
+              <ArticleIcon sx={{ color: '#fff' }} />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Email" arrow>
+            <IconButton 
+              href="mailto:your-email@example.com" 
+              aria-label="Email"
+              sx={{ 
+                '&:hover': {
+                  transform: 'scale(1.1)',
+                  transition: 'transform 0.3s ease-in-out',
+                  color: '#FFD700' // ホバー時の色をゴールドに変更
+                }
+              }}
+            >
+              <EmailIcon sx={{ color: '#fff' }} />
+            </IconButton>
+          </Tooltip>
         </Box>
       </Box>
     </Box>

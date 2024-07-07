@@ -1,61 +1,105 @@
 import React from 'react';
-import { Box, Typography, Paper } from '@mui/material';
-import { Timeline,  TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot, TimelineItem } from '@mui/lab';
+import { Box, Typography, Paper, Grow, Chip, Link } from '@mui/material';
+import { WorkOutline as WorkOutlineIcon } from '@mui/icons-material';
+import { LocalShipping as LocalShippingIcon, Tv as TvIcon } from '@mui/icons-material';
+import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
+import { Timeline, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from '@mui/lab';
 
 interface Experience {
   title: string;
-  company: string;
   period: string;
+  role: string;  // 役職を追加
   description: string;
+  technologies: string[];
+  links: {
+    url: string;
+    title: string;
+  }[];
+  icon: React.ReactElement;
 }
 
 const experiences: Experience[] = [
-  // TODO: ここに開発物の画像を追加する
-  // TODO: 開発物のリンクとか、newsとかも追加する
-  // TODO: フレームワークとかスキル面の情報も記載する
   {
-    title: 'Frontend Developer',
-    company: 'Creative Agency',
-    period: 'May 2015 - Present',
-    description: 'Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.'
+    title: '港湾分野における情報処理システム CyberPort開発',
+    period: '2022年 10月 - 現在',
+    role: 'システムアーキテクト',  // 役職
+    description: '「CyberPort」は、港湾運営の効率化を図るために設計された先進的な情報処理システムです。このプロジェクトでは、リアルタイムでの船舶の入出港管理、荷役作業の最適化、環境監視といった複数の機能を統合しました。',
+    technologies: ['JavaScript (Dojo)', 'HTML', 'CSS', 'Python (Flask)', 'PostgreSQL'],
+    links: [
+      { url: 'https://example.com/cyberport-news1', title: 'CyberPortプロジェクトのニュースリリース1' },
+      { url: 'https://example.com/cyberport-news2', title: 'CyberPortプロジェクトのニュースリリース2' }
+    ],
+    icon: <LocalShippingIcon />
   },
   {
-    title: 'Graphic Designer',
-    company: 'Design Studio',
-    period: 'June 2013 - May 2015',
-    description: 'Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.'
-  },
-  {
-    title: 'Junior Web Developer',
-    company: 'Indie Studio',
-    period: 'January 2011 - May 2013',
-    description: 'User generated content in real-time will have multiple touchpoints for offshoring. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.'
+    title: 'AndroidOS搭載DTV 画質処理機能開発',
+    period: '2019年 7月 - 2022年 9月',
+    role: 'リードエンジニア',  // 役職
+    description: 'このプロジェクトでは、Android OSを搭載したデジタルテレビ(DTV)のための高度な画質処理機能を開発しました。',
+    technologies: ['C', 'C++', 'Android'],
+    links: [
+      { url: 'https://example.com/android-dtv-news', title: 'DTV画質処理機能開発に関する記事' }
+    ],
+    icon: <TvIcon />
   }
 ];
 
 const WorkExperience: React.FC = () => {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
-      <Paper elevation={3} sx={{ width: 1000, padding: 2 }}>
-        <Typography variant="h4" sx={{ textAlign: 'center', margin: 2 }}>
-          Work Experience
-        </Typography>
-        <Timeline position="alternate">
-          {experiences.map((exp, index) => (
-            <TimelineItem key={index}>
-              <TimelineSeparator>
-                <TimelineDot />
-                {index !== experiences.length - 1 && <TimelineConnector />}
-              </TimelineSeparator>
-              <TimelineContent sx={{ py: '12px', px: 2 }}>
-                <Typography variant="h6" color="primary.main">{exp.title} at {exp.company}</Typography>
-                <Typography variant="subtitle2">{exp.period}</Typography>
-                <Typography>{exp.description}</Typography>
-              </TimelineContent>
-            </TimelineItem>
-          ))}
-        </Timeline>
-      </Paper>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddding: 4,
+        marginBottom: 4 
+      }}
+    >
+      <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
+        <Paper
+          elevation={6}
+          sx={{
+            maxWidth: 1000,
+            width: '100%',
+            padding: 4,
+            backgroundColor: '#fafafa'
+          }}
+        >
+          <Typography variant="h5" sx={{ textAlign: 'left', margin: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+            <WorkOutlineIcon />
+            職務経歴
+          </Typography>
+          <Timeline sx={{ [`& .${timelineItemClasses.root}:before`]: { flex: 0, padding: 0 } }}>
+            {experiences.map((exp, index) => (
+              <TimelineItem key={index}>
+                <TimelineSeparator>
+                  <TimelineDot />
+                  {index !== experiences.length - 1 && <TimelineConnector />}
+                </TimelineSeparator>
+                <TimelineContent sx={{ py: '12px', px: 2, textAlign: 'left' }}>
+                  <Typography variant="h5" color="primary.main" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    {exp.icon}
+                    {exp.title}
+                  </Typography>
+                  <Typography variant="subtitle1" color="textSecondary">{exp.role}</Typography>
+                  <Typography variant="subtitle2">{exp.period}</Typography>
+                  <Typography>{exp.description}</Typography>
+                  <Box sx={{ mt: 1, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {exp.technologies.map((tech, i) => (
+                      <Chip key={i} label={tech} variant="outlined" color="primary" />
+                    ))}
+                  </Box>
+                  {exp.links.map((link, i) => (
+                    <Link key={i} href={link.url} target="_blank" rel="noopener" sx={{ mt: 1, display: 'block' }}>
+                      {link.title}
+                    </Link>
+                  ))}
+                </TimelineContent>
+              </TimelineItem>
+            ))}
+          </Timeline>
+        </Paper>
+      </Grow>
     </Box>
   );
 };
