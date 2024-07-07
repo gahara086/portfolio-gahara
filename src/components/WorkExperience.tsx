@@ -20,7 +20,8 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    title: '港湾分野における情報処理システム CyberPort開発',
+    // title: '港湾分野における情報処理システム CyberPort開発',
+    title: '港湾分野における情報処理システム開発',
     period: '2022年 10月 - 現在',
     role: 'システムアーキテクト',  // 役職
     description: '「CyberPort」は、港湾運営の効率化を図るために設計された先進的な情報処理システムです。このプロジェクトでは、リアルタイムでの船舶の入出港管理、荷役作業の最適化、環境監視といった複数の機能を統合しました。',
