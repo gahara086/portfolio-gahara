@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { loadModules } from 'esri-loader';
+import { Box, Paper, Typography } from '@mui/material';
 
 const MapApp = () => {
   useEffect(() => {
@@ -28,11 +29,16 @@ const MapApp = () => {
   }, []);
 
   return (
-    // アプリの紹介文も入れる
-    // サイズは調整する
-    <div id="mapView" style={{ height: '500px', width: '100%' }}>
-      {/* 地図が表示される */}
-    </div>
+    <Box sx={{ display: 'flex', justifyContent: 'center', p: 2, m: 2 }}>
+      <Paper elevation={3} sx={{ width: 1000, maxWidth: '100%', padding: 2 }}>
+        <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: 2 }}>
+          地図アプリ
+        </Typography>
+        <div id="mapView" style={{ height: '500px', width: '100%' }}>
+          {/* 地図が表示される */}
+        </div>
+      </Paper>
+    </Box>
   );
 };
 

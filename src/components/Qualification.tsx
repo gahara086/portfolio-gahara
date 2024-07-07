@@ -15,14 +15,6 @@ const qualifications: Qualification[] = [
   {
     title: '応用情報技術者',
     year: '2020'
-  },
-  {
-    title: 'プロジェクトマネージメントプロフェッショナル（PMP）',
-    year: '2021'
-  },
-  {
-    title: 'AWS Certified Solutions Architect – Associate',
-    year: '2022'
   }
 ];
 

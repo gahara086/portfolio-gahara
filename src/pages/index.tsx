@@ -11,6 +11,7 @@ import Qualification from '../components/Qualification';
 import Hobbies from '../components/Hobbies';
 import Education from '../components/Education';
 // import MapApp from '../components/MapApp';
+import ProjectDetails from '../components/ProjectDetails';
 
 const Home: NextPage = () => {
   return (
@@ -23,14 +24,14 @@ const Home: NextPage = () => {
       {/* <Experience /> */}
       {/* <Projects /> */}
       {/* <Expertise /> */}
+      <ProjectDetails /> 
       <Education />
       <Qualification />
       <Hobbies /> 
       {/* <MapApp />  */}
-      {/*  */}
     </div>
   );
-  
+
 };
 
 export default Home;
