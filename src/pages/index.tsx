@@ -13,8 +13,11 @@ import Education from '../components/Education';
 import References from '../components/References';
 // import MapApp from '../components/MapApp';
 // import ProjectDetails from '../components/ProjectDetails';
+import { useSession, signOut } from "next-auth/react";
 
 const Home: NextPage = () => {
+  // const { data: session, status } = useSession();
+
   return (
     <div>
       <HomePage />
@@ -31,6 +34,7 @@ const Home: NextPage = () => {
       <References /> 
       <Hobbies /> 
       {/* <MapApp />  */}
+      <button onClick={() => signOut()}>サインアウト</button>
     </div>
   );
 
