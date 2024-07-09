@@ -9,7 +9,7 @@ export default NextAuth({
         username: { label: "ユーザ名", type: "text" },
         password: { label: "パスワード", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const realUser = { id: "1", name: "AdminUser", email: "admin@example.com", role: "admin", backendToken: "token123" };
         if (credentials?.username === realUser.name && credentials?.password === "password") {
           return realUser; // ユーザー情報を返す
