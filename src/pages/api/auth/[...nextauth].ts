@@ -1,5 +1,9 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+// import { PrismaAdapter } from "@next-auth/prisma-adapter";
+// import { PrismaClient } from "@prisma/client";
+
+// const prisma = new PrismaClient();
 
 export default NextAuth({
   providers: [
@@ -11,6 +15,7 @@ export default NextAuth({
       },
       async authorize(credentials) {
         const realUser = { id: "1", name: "AdminUser", email: "admin@example.com", role: "admin", backendToken: "token123" };
+
         if (credentials?.username === realUser.name && credentials?.password === "password") {
           return realUser; // ユーザー情報を返す
         }
@@ -18,6 +23,7 @@ export default NextAuth({
       },
     }),
   ],
+  // adapter: PrismaAdapter(prisma),
   pages: {
     signIn: "/auth/signin",
   },
@@ -30,10 +36,12 @@ export default NextAuth({
       return token;
     },
     session({ session, token }) {
-      session.user.role = token.role;
-      session.user.backendToken = token.backendToken;
+      if (token) {
+        session.user.role = token.role;
+        session.user.backendToken = token.backendToken;
+      }
       return session;
     },
   },
-  secret:process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 });
