@@ -24,7 +24,7 @@ const experiences: Experience[] = [
     period: '2022年 10月 - 現在',
     role: '開発側リーダー',  // 役職
     description: '港湾施設情報を電子化し、地図上で情報を確認できるアプリの開発を行いました。利用者視点でユーザビリティを意識し利活用しやすいアプリにすることで、顧客満足度の向上に貢献しました。',
-    technologies: ['JavaScript (jQuery, Dojo, ArcGIS, Auth0)', 'HTML', 'CSS', 'Python (Flask, Auth0)', 'PostgreSQL'],
+    technologies: ['JavaScript (jQuery, Dojo, ArcGIS, Auth0)', 'HTML', 'CSS (Bootstrap)', 'Python (Flask, Auth0)', 'PostgreSQL'],
     links: [
       { url: 'https://www.cyber-port.mlit.go.jp/infra/', title: '対象アプリ' },
       { url: 'https://www.mlit.go.jp/kowan/content/001741935.pdf', title: 'プロジェクトのリリースニュース' }

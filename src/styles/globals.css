@@ -81,18 +81,21 @@
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  background-color: #f0f0f0; /* 背景色の変更 */
+  background-image: url('/background.jpg'); /* 背景画像の設定 */
+  background-size: cover; /* 背景画像をカバーするように設定 */
+  background-position: center; /* 背景画像を中央に配置 */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /* 背景色の変更 */
+  background-color: #f0f0f0;
+  /* 背景画像の設定 */
+  background-image: url('/background.jpg');
+  /* 背景画像をカバーするように設定 */
+  background-size: cover;
+  /* 背景画像を中央に配置 */
+  background-position: center;
 }
 
 a {
