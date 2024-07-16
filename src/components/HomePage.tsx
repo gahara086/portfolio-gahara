@@ -37,12 +37,12 @@ const HomePage = () => {
           sx={{ width: 90, height: 90, mb: 2 }}
         />
         <Typography variant="h4" sx={{ color: '#fff', mb: 1 }}>
-          名前苗字
+          菅原栄嗣
         </Typography>
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Tooltip title="GitHub" arrow>
             <IconButton 
-              href="https://github.com/yourusername" 
+              href="https://github.com/gahara086" 
               aria-label="GitHub"
               sx={{ 
                 '&:hover': {
@@ -57,7 +57,7 @@ const HomePage = () => {
           </Tooltip>
           <Tooltip title="Qiita" arrow>
             <IconButton 
-              href="https://qiita.com/yourusername" 
+              href="https://qiita.com/moririn086" 
               aria-label="Qiita"
               sx={{ 
                 '&:hover': {
@@ -70,7 +70,7 @@ const HomePage = () => {
               <ArticleIcon sx={{ color: '#fff' }} />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Email" arrow>
+          {/* <Tooltip title="Email" arrow>
             <IconButton 
               href="mailto:your-email@example.com" 
               aria-label="Email"
@@ -84,7 +84,7 @@ const HomePage = () => {
             >
               <EmailIcon sx={{ color: '#fff' }} />
             </IconButton>
-          </Tooltip>
+          </Tooltip> */}
         </Box>
       </Box>
     </Box>

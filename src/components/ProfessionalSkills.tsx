@@ -21,25 +21,22 @@ interface Skill {
 const programmingSkills: Skill[] = [
   { name: 'HTML', level: 'Master', value: 100, color: 'primary', icon: CodeIcon },
   { name: 'CSS', level: 'Expert', value: 90, color: 'secondary', icon: CodeIcon },
-  { name: 'JavaScript', level: 'Advance', value: 80, color: 'primary', icon: PublicIcon },
-  { name: 'TypeScript', level: 'Advance', value: 80, color: 'primary', icon: CodeIcon },
-  { name: 'Python', level: 'Advance', value: 80, color: 'secondary', icon: StorageIcon },
-  { name: 'C', level: 'Master', value: 100, color: 'error', icon: StorageIcon },
-  { name: 'C++', level: 'Expert', value: 90, color: 'info', icon: StorageIcon },
-  { name: 'Java', level: 'Expert', value: 90, color: 'error', icon: StorageIcon },
-  { name: 'Algorithm', level: 'Beginner', value: 30, color: 'info', icon: AccountTreeIcon }
+  { name: 'JavaScript', level: 'MASTER', value: 100, color: 'primary', icon: CodeIcon },
+  { name: 'TypeScript', level: 'Advance', value: 80, color: 'error', icon: CodeIcon },
+  { name: 'Python', level: 'MASTER', value: 100, color: 'primary', icon: StorageIcon },
+  { name: 'C', level: 'Master', value: 100, color: 'primary', icon: StorageIcon },
+  { name: 'C++', level: 'Advance', value: 90, color: 'error', icon: StorageIcon },
+  { name: 'Java', level: 'Beginner', value: 90, color: 'info', icon: CodeIcon },
+  { name: 'Algorithm', level: 'Advance', value: 30, color: 'error', icon: AccountTreeIcon }
 ];
 
 const communicationSkills: Skill[] = [
-  { name: 'CodeReview', level: 'Master', value: 100, color: 'primary', icon: CodeIcon },
-  { name: 'InterView', level: 'Master', value: 100, color: 'primary', icon: PeopleIcon },
-  { name: 'Presentation', level: 'Master', value: 100, color: 'primary', icon: PublicIcon },
-  { name: 'LeaderShip', level: 'Master', value: 100, color: 'primary', icon: PeopleIcon },
-  { name: 'Communication', level: 'Expert', value: 90, color: 'secondary', icon: CommunicationIcon },
-  { name: 'CreateDocument', level: 'Expert', value: 90, color: 'secondary', icon: AccountTreeIcon },
-  { name: 'CustomerSupport', level: 'Expert', value: 90, color: 'secondary', icon: PeopleIcon },
-  { name: 'ClientSupport', level: 'Expert', value: 90, color: 'secondary', icon: CommunicationIcon },
-  { name: 'ProjectManagement', level: 'Expert', value: 90, color: 'secondary', icon: AccountTreeIcon }
+  { name: 'コミュニケーション', level: 'Expert', value: 90, color: 'secondary', icon: PeopleIcon },
+  { name: '傾聴力', level: 'Master', value: 100, color: 'primary', icon: PeopleIcon },
+  { name: 'ドキュメント作成', level: 'Expert', value: 90, color: 'secondary', icon: CodeIcon },
+  { name: 'コードレビュー', level: 'Expert', value: 90, color: 'secondary', icon: CodeIcon },
+  { name: 'ティーチング', level: 'Expert', value: 90, color: 'secondary', icon: CommunicationIcon },
+  { name: 'プロジェクトマネジメント', level: 'Beginner', value: 30, color: 'info', icon: AccountTreeIcon }
 ];
 
 interface SkillBarProps {
@@ -60,7 +57,7 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, level, value, color, icon }) 
     <Grow in={inView} style={{ transformOrigin: '0 0 0' }} timeout={{ enter: 1000, exit: 500 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: 1 }} ref={ref}>
         <Icon component={icon} sx={{ mr: 1 }} />
-        <Typography sx={{ width: '20%' }}>{name}</Typography>
+        <Typography sx={{ width: '30%' }}>{name}</Typography>
         <Box sx={{ width: '70%', height: 20, marginRight: 2, position: 'relative' }}>
           <LinearProgress 
             variant="determinate"
@@ -102,37 +99,39 @@ const ProfessionalSkills: React.FC = () => {
         padding: 4,
       }}
     >
-      <Paper
-        elevation={6}
-        sx={{
-          maxWidth: 1000,
-          width: '100%',
-          padding: 2 ,
-          backgroundColor: '#fafafa'
-        }}
-      >
-        <Typography variant="h5" sx={{ textAlign: 'left', margin: 2 }}>
-          <Icon component={EngineeringIcon} sx={{ mr: 1, verticalAlign: 'bottom' }} />専門技術
-        </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Box sx={{ width: '50%' }}>
-            <Typography variant="h6" sx={{ textAlign: 'left', margin: 2 }}>
-              <Icon component={ComputerIcon} sx={{ mr: 1, verticalAlign: 'bottom' }} />プログラミングスキル
-            </Typography>
-            {programmingSkills.map(skill => (
-              <SkillBar key={skill.name} name={skill.name} level={skill.level} value={skill.value} color={skill.color} icon={skill.icon} />
-            ))}
+      <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
+        <Paper
+          elevation={6}
+          sx={{
+            maxWidth: 1000,
+            width: '100%',
+            padding: 4 ,
+            backgroundColor: '#fafafa'
+          }}
+        >
+          <Typography variant="h5" sx={{ textAlign: 'left', margin: 2 }}>
+            <Icon component={EngineeringIcon} sx={{ mr: 1, verticalAlign: 'bottom' }} />専門技術
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box sx={{ width: '100%' }}>
+              <Typography variant="h6" sx={{ textAlign: 'left', margin: 2 }}>
+                <Icon component={ComputerIcon} sx={{ mr: 1, verticalAlign: 'bottom' }} />プログラミングスキル
+              </Typography>
+              {programmingSkills.map(skill => (
+                <SkillBar key={skill.name} name={skill.name} level={skill.level} value={skill.value} color={skill.color} icon={skill.icon} />
+              ))}
+            {/* </Box> */}
+            {/* <Box sx={{ width: '50%' }}> */}
+              <Typography variant="h6" sx={{ textAlign: 'left', margin: 2 }}>
+                <Icon component={CommunicationIcon} sx={{ mr: 1, verticalAlign: 'bottom' }} />コミュニケーションスキル
+              </Typography>
+              {communicationSkills.map(skill => (
+                <SkillBar key={skill.name} name={skill.name} level={skill.level} value={skill.value} color={skill.color} icon={skill.icon} />
+              ))}
+            </Box>
           </Box>
-          <Box sx={{ width: '50%' }}>
-            <Typography variant="h6" sx={{ textAlign: 'left', margin: 2 }}>
-              <Icon component={CommunicationIcon} sx={{ mr: 1, verticalAlign: 'bottom' }} />コミュニケーションスキル
-            </Typography>
-            {communicationSkills.map(skill => (
-              <SkillBar key={skill.name} name={skill.name} level={skill.level} value={skill.value} color={skill.color} icon={skill.icon} />
-            ))}
-          </Box>
-        </Box>
-      </Paper>
+        </Paper>
+      </Grow>
     </Box>
   );
 };

@@ -14,6 +14,10 @@ interface Education {
     title: string;
     summary: string;
   };  // 卒論のタイトルと内容を詳細に記述
+  action?: {
+    title: string;
+    summary: string;
+  };  // 卒論のタイトルと内容を詳細に記述
 }
 
 const educationHistory: Education[] = [
@@ -26,27 +30,30 @@ const educationHistory: Education[] = [
       title: '深層強化学習を使用したビデオゲームプレイヤーの作成',
       summary: 'シミュレーション環境「OpenAI Gym」を使用して、ビデオゲーム「pacman」のプレイヤーを作成しました。深層強化学習を採用し、高度な決定能力を有するプレイヤーの開発を目指しました。'
     },
+    // action: {
+    //   title: '講義内での成果物で個人賞を受賞',
+    //   summary: 'URLを記載'
+    // },
     icon: <UniversityIcon />
   },
   {
-    degree: '教養',
-    school: '高校',
+    degree: '',
+    school: '大阪桐蔭高等学校',
     period: '2011 - 2014',
-    description: '一般教養を学習',
+    description: '',
     icon: <HighSchoolIcon />
   },
   {
-    degree: '教養',
-    school: '中学',
+    degree: '',
+    school: '奈良教育大学附属中学校',
     period: '2008 - 2011',
-    description: '一般教養を学習',
+    description: '',
     icon: <SchoolIcon />
   }
 ];
 
 const Education: React.FC = () => {
   return (
-    // <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
     <Box
       sx={{
         display: 'flex',
@@ -57,7 +64,6 @@ const Education: React.FC = () => {
       }}
     >
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
-        {/* <Paper elevation={6} sx={{ maxWidth: 960, width: '100%', padding: 4, backgroundColor: '#fafafa' }}> */}
         <Paper
           elevation={6}
           sx={{
@@ -90,6 +96,12 @@ const Education: React.FC = () => {
                     <>
                       <Typography sx={{ mt: 1, fontWeight: 'bold' }}>卒論タイトル: {edu.thesis.title}</Typography>
                       <Typography sx={{ mt: 0.5 }}>卒論概要: {edu.thesis.summary}</Typography>
+                    </>
+                  )}
+                  {edu.action && (
+                    <>
+                      <Typography sx={{ mt: 1, fontWeight: 'bold' }}>: {edu.action.title}</Typography>
+                      <Typography sx={{ mt: 0.5 }}>卒論概要: {edu.action.summary}</Typography>
                     </>
                   )}
                 </TimelineContent>

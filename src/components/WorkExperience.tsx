@@ -20,26 +20,25 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    // title: '港湾分野における情報処理システム CyberPort開発',
     title: '港湾分野における情報処理システム開発',
     period: '2022年 10月 - 現在',
-    role: 'システムアーキテクト',  // 役職
-    description: '「CyberPort」は、港湾運営の効率化を図るために設計された先進的な情報処理システムです。このプロジェクトでは、リアルタイムでの船舶の入出港管理、荷役作業の最適化、環境監視といった複数の機能を統合しました。',
-    technologies: ['JavaScript (Dojo)', 'HTML', 'CSS', 'Python (Flask)', 'PostgreSQL'],
+    role: '開発側リーダー',  // 役職
+    description: '港湾施設情報を電子化し、地図上で情報を確認できるアプリの開発を行いました。利用者視点でユーザビリティを意識し利活用しやすいアプリにすることで、顧客満足度の向上に貢献しました。',
+    technologies: ['JavaScript (jQuery, Dojo, ArcGIS, Auth0)', 'HTML', 'CSS', 'Python (Flask, Auth0)', 'PostgreSQL'],
     links: [
-      { url: 'https://example.com/cyberport-news1', title: 'CyberPortプロジェクトのニュースリリース1' },
-      { url: 'https://example.com/cyberport-news2', title: 'CyberPortプロジェクトのニュースリリース2' }
+      { url: 'https://www.cyber-port.mlit.go.jp/infra/', title: '対象アプリ' },
+      { url: 'https://www.mlit.go.jp/kowan/content/001741935.pdf', title: 'プロジェクトのリリースニュース' }
     ],
     icon: <LocalShippingIcon />
   },
   {
     title: 'AndroidOS搭載DTV 画質処理機能開発',
     period: '2019年 7月 - 2022年 9月',
-    role: 'リードエンジニア',  // 役職
-    description: 'このプロジェクトでは、Android OSを搭載したデジタルテレビ(DTV)のための高度な画質処理機能を開発しました。',
+    role: '開発職',  // 役職
+    description: 'Android OSを搭載したデジタルテレビ(DTV)のための高度な画質処理機能の開発しました。開発にあたって、バグの原因の調査及び改修及び新規モデルへの対応、試験まで幅広く開発を実施しました。',
     technologies: ['C', 'C++', 'Android'],
     links: [
-      { url: 'https://example.com/android-dtv-news', title: 'DTV画質処理機能開発に関する記事' }
+      { url: 'https://example.com/android-dtv-news', title: 'リリースされているDTV画質処理機能（リンク先無し）' }
     ],
     icon: <TvIcon />
   }

@@ -8,9 +8,10 @@ import WorkExperience from '../components/WorkExperience';
 // import Projects from '../components/Projects';
 // import Expertise from '../components/Expertise';
 import Qualification from '../components/Qualification';
-import Hobbies from '../components/Hobbies';
 import Education from '../components/Education';
-import References from '../components/References';
+// import References from '../components/References';
+import StudyGuide from '../components/StudyGuide';
+import Hobbies from '../components/Hobbies';
 // import MapApp from '../components/MapApp';
 // import ProjectDetails from '../components/ProjectDetails';
 
@@ -28,7 +29,8 @@ const Home: NextPage = () => {
       {/* <ProjectDetails />  */}
       <Education />
       <Qualification />
-      <References /> 
+      {/* <References />  */}
+      <StudyGuide /> 
       <Hobbies /> 
       {/* <MapApp />  */}
     </div>
