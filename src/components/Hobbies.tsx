@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, CardMedia, Dialog, DialogTitle, DialogContent, Grow } from '@mui/material';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import CodeIcon from '@mui/icons-material/Code';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import StarIcon from '@mui/icons-material/Star';
 

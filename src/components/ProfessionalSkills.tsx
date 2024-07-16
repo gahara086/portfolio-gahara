@@ -4,7 +4,6 @@ import { useInView } from 'react-intersection-observer';
 import CodeIcon from '@mui/icons-material/Code';
 import CommunicationIcon from '@mui/icons-material/Forum';
 import StorageIcon from '@mui/icons-material/Storage';
-import PublicIcon from '@mui/icons-material/Public';
 import PeopleIcon from '@mui/icons-material/People';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import EngineeringIcon from '@mui/icons-material/Engineering';

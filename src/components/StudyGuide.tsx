@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, Link, Dialog, DialogTitle, DialogContent, Grow } from '@mui/material';
+import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, Link, Dialog, DialogContent, Grow } from '@mui/material';
 import Slider from 'react-slick';
 import CodeIcon from '@mui/icons-material/Code';
 import StarIcon from '@mui/icons-material/Star';
@@ -90,7 +90,6 @@ const studyGuide: Study[] = [
 const StudyGuide: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
-  const [paperWidth, setPaperWidth] = useState(1000); // ここでサイズ調整
 
   const handleClickOpen = (image: string) => {
     setSelectedImage(image);
@@ -122,7 +121,7 @@ const StudyGuide: React.FC = () => {
       }}
     >
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
-        <Paper elevation={6} sx={{ maxWidth: paperWidth, width: '100%', padding: 2 }}>
+        <Paper elevation={6} sx={{ maxWidth: '1000px', width: '100%', padding: 2 }}>
           <Typography variant="h5" sx={{ textAlign: 'center', margin: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
             <LightbulbOutlinedIcon />
             技術習得

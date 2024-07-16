@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Typography, Avatar, IconButton, Tooltip } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import ArticleIcon from '@mui/icons-material/Article'; // Qiitaのアイコンが直接はないため、ArticleIconを代用します
-import EmailIcon from '@mui/icons-material/Email'; // Emailアイコンを追加
 
 const HomePage = () => {
   return (
