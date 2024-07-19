@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, Link, Dialog, DialogTitle, DialogContent, Grow } from '@mui/material';
+import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, Link, Dialog, DialogContent, Grow } from '@mui/material';
 import Slider from 'react-slick';
 import CodeIcon from '@mui/icons-material/Code';
 import StarIcon from '@mui/icons-material/Star';
@@ -22,12 +22,12 @@ interface Study {
   achievements: Achievement[];
 }
 
-const imageStyle = {
-  width: 'auto', // 幅は自動で調整
-  maxHeight: 90, // 最大高さを90pxに制限
-  objectFit: 'cover', // コンテンツのアスペクト比を維持しつつ、コンテナ全体を覆う
-  cursor: 'pointer'
-};
+// const imageStyle = {
+//   width: 'auto', // 幅は自動で調整
+//   maxHeight: 90, // 最大高さを90pxに制限
+//   objectFit: 'cover', // コンテンツのアスペクト比を維持しつつ、コンテナ全体を覆う
+//   cursor: 'pointer'
+// };
 
 const studyGuide: Study[] = [
   {
@@ -96,7 +96,7 @@ const studyGuide: Study[] = [
 const StudyGuide: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
-  const [paperWidth, setPaperWidth] = useState(1000); // ここでサイズ調整
+  const paperWidth = 1000;
 
   const handleClickOpen = (image: string) => {
     setSelectedImage(image);

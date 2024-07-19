@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import CodeIcon from '@mui/icons-material/Code';
 import StorageIcon from '@mui/icons-material/Storage';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import EngineeringIcon from '@mui/icons-material/Engineering';
+// import EngineeringIcon from '@mui/icons-material/Engineering';
 import ComputerIcon from '@mui/icons-material/Computer';
 
 interface Skill {
