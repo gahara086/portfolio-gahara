@@ -119,10 +119,10 @@ const StudyGuide: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
-        <Paper elevation={3} sx={{ maxWidth: paperWidth, width: '100%', padding: 2 }}>
+        <Paper elevation={6} sx={{ maxWidth: paperWidth, width: '100%', padding: 2 }}>
           <Typography variant="h4" sx={{ textAlign: 'left', margin: 2 }}>
             <LightbulbOutlinedIcon />
-            技術習得
+            個人学習
           </Typography>
           {studyGuide.map((study, index) => (
             <Box key={index} sx={{ margin: 2 }}>
