@@ -1,11 +1,12 @@
 import React from 'react';
 import { Box, Typography, Paper, Button, Grow, Divider } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+// import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import CakeIcon from '@mui/icons-material/Cake';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import AccountBoxIcon from '@mui/icons-material/AccountBox'; // プロフィールアイコン
+import LandscapeIcon from '@mui/icons-material/Landscape';
 
 const AboutMe = () => {
   return (
@@ -41,7 +42,7 @@ const AboutMe = () => {
               開発側のリーダーとして、現在は週3日客先に常駐して仕様調整の業務を行っています。
               技術的な課題だけでなく、顧客の要望に応えることで、より良い製品作りを目指しています。
             </Typography>
-            <Typography variant="body1" sx={{ mb: 2 }}>
+            {/* <Typography variant="body1" sx={{ mb: 2 }}>
               また、自身の強みを発見するために、適正診断を実施しました。<br />
               下記に診断結果を添付します。
             </Typography>
@@ -59,7 +60,7 @@ const AboutMe = () => {
               target="_blank"
             >
               ストレングスファインダー診断結果
-            </Button>
+            </Button> */}
           </Box>
           <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
           <Box sx={{ width: '40%' }}>
@@ -72,15 +73,19 @@ const AboutMe = () => {
             </Typography>
             <Typography variant="body1" sx={{ mb: 1 }}>
               <CakeIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-              年齢: 28歳
+              年齢: 29歳
+            </Typography>
+            <Typography variant="body1" sx={{ mb: 1 }}>
+              <LandscapeIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
+              出身地: 奈良県
             </Typography>
             <Typography variant="body1" sx={{ mb: 1 }}>
               <EmailIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-              メールアドレス: email@example.com
+              メールアドレス: gaharajob@gmail.com
             </Typography>
-            <Typography variant="body1" sx={{ mb: 2 }}>
+            <Typography variant="body1" sx={{ mb: 1 }}>
               <PhoneIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-              電話番号: 090-1234-5678
+              電話番号: 080-3845-1745
             </Typography>
           </Box>
         </Paper>

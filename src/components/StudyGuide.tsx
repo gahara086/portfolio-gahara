@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, Link, Dialog, DialogContent, Grow } from '@mui/material';
+import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, Link, Dialog, DialogTitle, DialogContent, Grow } from '@mui/material';
 import Slider from 'react-slick';
 import CodeIcon from '@mui/icons-material/Code';
 import StarIcon from '@mui/icons-material/Star';
@@ -21,6 +21,13 @@ interface Study {
   icon: JSX.Element;
   achievements: Achievement[];
 }
+
+const imageStyle = {
+  width: 'auto', // 幅は自動で調整
+  maxHeight: 90, // 最大高さを90pxに制限
+  objectFit: 'cover', // コンテンツのアスペクト比を維持しつつ、コンテナ全体を覆う
+  cursor: 'pointer'
+};
 
 const studyGuide: Study[] = [
   {
@@ -48,12 +55,12 @@ const studyGuide: Study[] = [
       {
         content: 'AtCoderProblems',
         description: '様々なアルゴリズムを習得するために、AtCoderの過去問を実施',
-        images: ['/StudyGuide/atcorder-problems.png']
+        images: ['/StudyGuide/atcorder/atcorder-problems.png']
       },
       {
         content: 'atcoder 茶入 - 2023',
         description: 'プログラミングコンテストサイト「atcoder」で初級者レベルに到達',
-        images: ['/StudyGuide/atcorder-account.png']
+        images: ['/StudyGuide/atcorder/atcorder-account.png']
       }
     ],
   },
@@ -64,24 +71,23 @@ const studyGuide: Study[] = [
       {
         content: '技術書',
         description: '開発効率向上のために技術書を通読',
-        // images: ['/StudyGuide/tech_book_1.jpeg', '/StudyGuide/tech_book_2.jpeg']
-        images: []
-        // リーダブルコード
-        // 良いコード悪いコードで学ぶ
-        // SQLアンチパターン
-        // Web設計の本
-        // プリンシプルオブプログラミング
-        // 競技プログラミングの本
+        images: [
+          '/StudyGuide/technology/book1.jpeg',
+          '/StudyGuide/technology/book2.jpg',
+          '/StudyGuide/technology/book3.jpg',
+          '/StudyGuide/technology/book4.jpg',
+          '/StudyGuide/technology/book5.jpg',
+        ]
       },
       {
         content: '啓発本',
         description: 'コミュニケーションスキル及び開発フロー改善など、社会人としての振る舞いを学ぶために自己啓発本を通読',
-        // images: ['/Hobby/自己啓発.png','/Hobby/自己啓発.png']
-        images: []
-        // カーネギー
-        // チーズはどこへ消えた
-        // レガシーコードからの脱却
-        // googleのやつ
+        images: [
+          '/StudyGuide/enlightenment/book1.jpg',
+          '/StudyGuide/enlightenment/book2.jpg',
+          '/StudyGuide/enlightenment/book3.jpeg',
+          '/StudyGuide/enlightenment/book4.jpeg',
+        ]
       }
     ],
   },
@@ -90,10 +96,10 @@ const studyGuide: Study[] = [
 const StudyGuide: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
+  const [paperWidth, setPaperWidth] = useState(1000); // ここでサイズ調整
 
   const handleClickOpen = (image: string) => {
     setSelectedImage(image);
-    // setImageDescription(desciption);
     setOpen(true);
   };
 
@@ -111,18 +117,10 @@ const StudyGuide: React.FC = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddding: 4,
-        marginBottom: 4 
-      }}
-    >
+    <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
-        <Paper elevation={6} sx={{ maxWidth: '1000px', width: '100%', padding: 2 }}>
-          <Typography variant="h5" sx={{ textAlign: 'center', margin: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Paper elevation={3} sx={{ maxWidth: paperWidth, width: '100%', padding: 2 }}>
+          <Typography variant="h4" sx={{ textAlign: 'left', margin: 2 }}>
             <LightbulbOutlinedIcon />
             技術習得
           </Typography>
@@ -139,19 +137,19 @@ const StudyGuide: React.FC = () => {
                       <StarIcon />
                     </ListItemIcon>
                     <ListItemText primary={achievement.content} secondary={achievement.description} />
-                    <Box sx={{ width: 160, height: 90, marginLeft: 2 }}>
+                    <Box sx={{ width: 160, height: 90, marginLeft: 2,  }}>
                       {achievement.images.length > 0 ? (
                         <Slider {...settings}>
                           {achievement.images.map((image, imageIndex) => (
                             <div key={imageIndex} onClick={() => handleClickOpen(image)}>
-                              <img src={image} alt={`Image of ${achievement.content}`} style={{width: '100%', height: '100%', cursor: 'pointer' }} />
+                              <img src={image} alt={`Image of ${achievement.content}`} style={{ width: '100%', maxHeight: 75, objectFit: 'contain', cursor: 'pointer' }} />
                             </div>
                           ))}
                         </Slider>
                       ) : <></>}
                     </Box>
                     {achievement.url && (
-                      <Link href={achievement.url} target="_blank" rel="noopener" sx={{ mt: 1 }}>
+                      <Link href={achievement.url} target="_blank" rel="noopener" >
                         サンプルアプリ
                       </Link>
                     )}
@@ -165,8 +163,6 @@ const StudyGuide: React.FC = () => {
       <Dialog open={open} onClose={handleClose} maxWidth="md">
         <DialogContent>
           <img src={selectedImage} alt="Selected" style={{ width: '100%', height: 'auto' }} />
-          <Typography variant="body1" style={{ marginTop: 20 }}>
-          </Typography>
         </DialogContent>
       </Dialog>
     </Box>

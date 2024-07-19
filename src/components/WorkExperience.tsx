@@ -24,10 +24,10 @@ const experiences: Experience[] = [
     period: '2022年 10月 - 現在',
     role: '開発側リーダー',  // 役職
     description: '港湾施設情報を電子化し、地図上で情報を確認できるアプリの開発を行いました。利用者視点でユーザビリティを意識し利活用しやすいアプリにすることで、顧客満足度の向上に貢献しました。',
-    technologies: ['JavaScript (jQuery, Dojo, ArcGIS, Auth0)', 'HTML', 'CSS (Bootstrap)', 'Python (Flask, Auth0)', 'PostgreSQL'],
+    technologies: ['JavaScript (jQuery, Dojo, ArcGIS, Auth0)', 'HTML', 'CSS (Bootstrap)', 'Python (Flask, Auth0)', 'DataBase(PostgreSQL)'],
     links: [
       { url: 'https://www.cyber-port.mlit.go.jp/infra/', title: '対象アプリ' },
-      { url: 'https://www.mlit.go.jp/kowan/content/001741935.pdf', title: 'プロジェクトのリリースニュース' }
+      { url: 'https://www.mlit.go.jp/kowan/content/001741935.pdf', title: 'リリースニュース' }
     ],
     icon: <LocalShippingIcon />
   },
@@ -36,9 +36,9 @@ const experiences: Experience[] = [
     period: '2019年 7月 - 2022年 9月',
     role: '開発職',  // 役職
     description: 'Android OSを搭載したデジタルテレビ(DTV)のための高度な画質処理機能の開発しました。開発にあたって、バグの原因の調査及び改修及び新規モデルへの対応、試験まで幅広く開発を実施しました。',
-    technologies: ['C', 'C++', 'Android'],
+    technologies: ['C', 'C++'],
     links: [
-      { url: 'https://example.com/android-dtv-news', title: 'リリースされているDTV画質処理機能（リンク先無し）' }
+      { url: 'https://av.watch.impress.co.jp/docs/news/1356989.html', title: 'リリースニュース' }
     ],
     icon: <TvIcon />
   }

@@ -52,11 +52,6 @@ const hobbies: Hobby[] = [
         content: '週2回のトレーニングルーチン維持',
         description: '一貫して週に2回のトレーニングを行い、健康を維持',
         images: []
-      },
-      {
-        content: 'ベンチプレス N Kg',
-        description: 'ベンチプレスで個人記録を更新',
-        images: ['/Hobby/bench-press-achievements.png']
       }
     ],
   }

@@ -34,8 +34,7 @@ const TodoApp: React.FC = () => {
         <strong>tasks</strong>と<strong>input</strong>の二つの状態をuseStateで管理しています。<br />
         <strong>tasks</strong>はToDoリストの項目を配列で保持し、新しいタスクが追加されるたびに配列が更新されます。
         <strong>input</strong>はユーザーが入力フィールドに入力したテキストを保持し、エンターキーを押すか「追加」ボタンをクリックすると、
-        このテキストが新しいタスクとして<strong>tasks</strong>に追加されます。<br />
-        また、各タスクの横にある削除アイコンをクリックすることで、そのタスクをリストから削除することができます。これにより、リアクティブにUIが更新されることを体験できます。
+        このテキストが新しいタスクとして<strong>tasks</strong>に追加され、再レンダリングされます。<br />
       </Typography>
       <Typography variant="h6" gutterBottom>ToDoアプリ操作</Typography>
       <TextField

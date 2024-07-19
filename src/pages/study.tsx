@@ -15,6 +15,7 @@ interface HookDetail {
   useCase: string;
   link: string;
   icon: React.ElementType;
+  implement: boolean;
 }
 
 const hooksData: HookDetail[] = [
@@ -24,7 +25,8 @@ const hooksData: HookDetail[] = [
     detail: 'useStateは、関数コンポーネント内で状態管理を可能にするHookです。状態が更新されると、コンポーネントは再レンダリングされます。',
     useCase: 'ユーザーの入力フォームやオン/オフの切り替えスイッチのUIコンポーネントの状態管理。',
     link: '/study/useState',
-    icon: BookIcon
+    icon: BookIcon,
+    implement: true
   },
   {
     name: 'useEffect',
@@ -32,7 +34,8 @@ const hooksData: HookDetail[] = [
     detail: 'useEffectは、副作用（外部APIへのリクエスト、購読の設定、手動でのDOM更新など）を関数コンポーネント内で実行できるようにするHookです。',
     useCase: 'APIからデータをフェッチし、データをコンポーネントにロードする際に使用。',
     link: '/study/useEffect',
-    icon: UpdateIcon
+    icon: UpdateIcon,
+    implement: false
   },
   {
     name: 'useContext',
@@ -40,7 +43,8 @@ const hooksData: HookDetail[] = [
     detail: 'useContextは、コンテキストを利用して、異なるコンポーネント間でデータを共有するためのHookです。',
     useCase: 'テーマや言語設定など、アプリケーション全体で共有されるべきデータの管理。',
     link: '/study/useContext',
-    icon: ShareIcon
+    icon: ShareIcon,
+    implement: false
   },
   {
     name: 'useReducer',
@@ -48,7 +52,8 @@ const hooksData: HookDetail[] = [
     detail: 'useReducerは、状態更新ロジックをコンポーネント外に分離することができるHookで、特に複雑な状態ロジックや子コンポーネント間での状態共有に適しています。',
     useCase: 'ショッピングカートのような複雑な状態ロジックを持つコンポーネントで使用。',
     link: '/study/useReducer',
-    icon: ReduceCapacityIcon
+    icon: ReduceCapacityIcon,
+    implement: false
   },
   {
     name: 'useCallback',
@@ -56,7 +61,8 @@ const hooksData: HookDetail[] = [
     detail: 'useCallbackは、特定の依存が変更された場合にのみ関数を再生成することを可能にするHookです。',
     useCase: '高コストな計算を行う関数をメモ化し、再レンダリング時のパフォーマンスを最適化する。',
     link: '/study/useCallback',
-    icon: LoopIcon
+    icon: LoopIcon,
+    implement: false
   },
   {
     name: 'useMemo',
@@ -64,7 +70,8 @@ const hooksData: HookDetail[] = [
     detail: 'useMemoは、計算コストの高い関数の戻り値をメモ化し、依存値が変更された場合にのみ再計算を行うようにするHookです。',
     useCase: '大量データを処理する表のレンダリング性能を向上させる。',
     link: '/study/useMemo',
-    icon: CalculateIcon
+    icon: CalculateIcon,
+    implement: false
   },
   {
     name: 'useRef',
@@ -72,7 +79,8 @@ const hooksData: HookDetail[] = [
     detail: 'useRefは、レンダリング間で値を保持するためのHookです。これは変数への直接的なアクセスを可能にし、その値が変更されてもコンポーネントが再レンダリングされることはありません。',
     useCase: 'DOM要素への直接アクセスが必要な場合、例えばフォーム要素に自動的にフォーカスを当てる。',
     link: '/study/useRef',
-    icon: TouchAppIcon
+    icon: TouchAppIcon,
+    implement: false
   }
 ];
 
@@ -110,11 +118,16 @@ const Home = () => {
                     利用用途: {hook.useCase}
                   </Typography>
                 </ListItem>
-                <ListItem component={Link} href={hook.link} sx={{ pl: 4 }}>
-                  <Typography variant="body2" color="primary">
-                    サンプルアプリ
-                  </Typography>
-                </ListItem>
+                {hook.implement ?
+                  (<ListItem component={Link} href={hook.link} sx={{ pl: 4 }}>
+                    <Typography variant="body2" color="primary">
+                      サンプルアプリ
+                    </Typography>
+                  </ListItem>)
+                  : (<Typography variant="body2" color="textSecondary" sx={{ pl: 4 }}>
+                    サンプルアプリ作成中
+                  </Typography>)
+                }
               </List>
             </Collapse>
           </>
