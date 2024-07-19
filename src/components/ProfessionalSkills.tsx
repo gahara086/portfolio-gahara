@@ -109,18 +109,20 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, level, icon }) => {
 const ProfessionalSkills: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>
-      <Paper elevation={6} sx={{ maxWidth: 1000, width: '100%', padding: 4, backgroundColor: '#fafafa' }}>
-        <Typography variant="h5" sx={{ textAlign: 'left', margin: 2 }}>
-          <Icon component={ComputerIcon} sx={{ mr: 1, verticalAlign: 'bottom' }} />プログラミングスキル
-        </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Box sx={{ width: '100%' }}>
-            {programmingSkills.map(skill => (
-              <SkillBar key={skill.name} {...skill} />
-            ))}
+      <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
+        <Paper elevation={6} sx={{ maxWidth: 1000, width: '100%', padding: 4, backgroundColor: '#fafafa' }}>
+          <Typography variant="h5" sx={{ textAlign: 'left', margin: 2 }}>
+            <Icon component={ComputerIcon} sx={{ mr: 1, verticalAlign: 'bottom' }} />プログラミングスキル
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box sx={{ width: '100%' }}>
+              {programmingSkills.map(skill => (
+                <SkillBar key={skill.name} {...skill} />
+              ))}
+            </Box>
           </Box>
-        </Box>
-      </Paper>
+        </Paper>
+      </Grow>
     </Box>
   );
 };
