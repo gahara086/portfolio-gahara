@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Typography, Paper, Grow, Divider } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
-// import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import CakeIcon from '@mui/icons-material/Cake';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -15,7 +14,6 @@ const AboutMe = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        paddding: 4
       }}
     >
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>

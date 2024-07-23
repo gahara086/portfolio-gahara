@@ -4,15 +4,16 @@ import { useInView } from 'react-intersection-observer';
 import CodeIcon from '@mui/icons-material/Code';
 import StorageIcon from '@mui/icons-material/Storage';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
-// import EngineeringIcon from '@mui/icons-material/Engineering';
 import ComputerIcon from '@mui/icons-material/Computer';
 
+// スキルの型定義
 interface Skill {
-  name: string;
-  level: string;
-  icon: React.ElementType;
+  name: string; // スキルの名前
+  level: string; // スキルレベル
+  icon: React.ElementType; // スキルに関連するアイコン
 }
 
+// スキルのデータ
 const programmingSkills: Skill[] = [
   { name: 'HTML', level: 'Master', icon: CodeIcon },
   { name: 'CSS', level: 'Expert',  icon: CodeIcon },
@@ -25,6 +26,7 @@ const programmingSkills: Skill[] = [
   { name: 'Algorithm', level: 'Advance', icon: AccountTreeIcon }
 ];
 
+// スキルレベルに応じた色を取得する関数
 const getColorFromLevel = (level: string) => {
   switch (level) {
     case 'Master':
@@ -34,12 +36,13 @@ const getColorFromLevel = (level: string) => {
     case 'Advance':
       return '#228B22'; // 緑
     case 'Beginner':
-      return '#FF8C00'; // 黄色
+      return '#FF8C00'; // オレンジ
     default:
       return '#000000'; // デフォルトは黒
   }
 };
 
+// スキルレベルに応じた値を取得する関数
 const getValueFromLevel = (level: string) => {
   switch (level) {
     case 'Master':
@@ -55,38 +58,46 @@ const getValueFromLevel = (level: string) => {
   }
 };
 
-
+// スキルバーコンポーネント
 interface SkillBarProps {
-  name: string;
-  level: string;
-  icon: React.ElementType;
+  name: string; // スキルの名前
+  level: string; // スキルレベル
+  icon: React.ElementType; // アイコンコンポーネント
 }
 
 const SkillBar: React.FC<SkillBarProps> = ({ name, level, icon }) => {
+  // スクロールで表示されるかどうかを監視するフック
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.5
   });
+
+  // スキルレベルに基づいた色と値を取得
   const color = getColorFromLevel(level);
   const value = getValueFromLevel(level);
 
   return (
     <Grow in={inView} style={{ transformOrigin: '0 0 0' }} timeout={{ enter: 1000, exit: 500 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: 1 }} ref={ref}>
+        {/* スキルアイコン */}
         <Icon component={icon} sx={{ mr: 1 }} />
+        {/* スキル名 */}
         <Typography sx={{ width: '30%' }}>{name}</Typography>
         <Box sx={{ width: '70%', height: 20, marginRight: 2, position: 'relative' }}>
-          <LinearProgress 
+          {/* スキルレベルバー */}
+          <LinearProgress
             variant="determinate"
-            value={inView ? value : 0}
+            value={inView ? value : 0} // スクロールで表示された時のみ値を更新
             sx={{
               height: '100%',
               width: '100%',
               '& .MuiLinearProgress-bar': {
-                backgroundColor: color, // RGB値での色設定
-                transition: 'transform 2s ease-out'
+                backgroundColor: color, // スキルレベルに応じた色
+                transition: 'transform 2s ease-out' // スムーズなアニメーション
               }
-            }} />
+            }}
+          />
+          {/* スキルレベルのテキスト */}
           <Typography sx={{
             position: 'absolute',
             top: '50%',
@@ -106,6 +117,7 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, level, icon }) => {
   );
 };
 
+// プロフェッショナルスキルコンポーネント
 const ProfessionalSkills: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>
@@ -116,6 +128,7 @@ const ProfessionalSkills: React.FC = () => {
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Box sx={{ width: '100%' }}>
+              {/* 各スキルバーコンポーネントをマップして表示 */}
               {programmingSkills.map(skill => (
                 <SkillBar key={skill.name} {...skill} />
               ))}

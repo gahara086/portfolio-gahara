@@ -4,6 +4,15 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import ArticleIcon from '@mui/icons-material/Article'; // Qiitaのアイコンが直接はないため、ArticleIconを代用します
 import Head from 'next/head';
 
+// 共通のスタイルやコンポーネントを定義
+const iconButtonStyle = {
+  '&:hover': {
+    transform: 'scale(1.1)',
+    transition: 'transform 0.3s ease-in-out',
+    color: '#FFD700' // ホバー時の色をゴールドに変更
+  }
+};
+
 const HomePage = () => {
   return (
     <>
@@ -26,72 +35,47 @@ const HomePage = () => {
       >
         <Box
           sx={{
-            maxWidth: 1000,
-            width: '100%',
+            maxWidth: 1000, // 最大幅を設定
+            width: '100%', // コンテナの幅を100%に設定
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            padding: '20px',
-            borderRadius: '10px',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)', // 背景の半透明色
+            padding: '20px', // 内部の余白
+            borderRadius: '10px', // 角の丸み
             boxShadow: '0 3px 6px rgba(0,0,0,0.23)', // 影を追加して立体感を出す
-            mb: 0.5 // 下にスペースを確保
+            mb: 0.5, // 下の余白
           }}
         >
           <Avatar
-            src="/HomePage/icon.png"
-            sx={{ width: 90, height: 90, mb: 2 }}
+            src="/HomePage/icon.png" // アイコンの画像
+            sx={{ width: 90, height: 90, mb: 2 }} // アイコンのサイズと下の余白
           />
           <Typography variant="h4" sx={{ color: '#fff', mb: 1 }}>
             菅原栄嗣
           </Typography>
           <Box sx={{ display: 'flex', gap: 2 }}>
+            {/* GitHubのリンクボタン */}
             <Tooltip title="GitHub" arrow>
-              <IconButton 
-                href="https://github.com/gahara086" 
+              <IconButton
+                href="https://github.com/gahara086"
                 aria-label="GitHub"
-                sx={{ 
-                  '&:hover': {
-                    transform: 'scale(1.1)',
-                    transition: 'transform 0.3s ease-in-out',
-                    color: '#FFD700' // ホバー時の色をゴールドに変更
-                  }
-                }}
+                sx={iconButtonStyle}
               >
                 <GitHubIcon sx={{ color: '#fff' }} />
               </IconButton>
             </Tooltip>
+            {/* Qiitaのリンクボタン */}
             <Tooltip title="Qiita" arrow>
-              <IconButton 
-                href="https://qiita.com/moririn086" 
+              <IconButton
+                href="https://qiita.com/moririn086"
                 aria-label="Qiita"
-                sx={{ 
-                  '&:hover': {
-                    transform: 'scale(1.1)',
-                    transition: 'transform 0.3s ease-in-out',
-                    color: '#FFD700' // ホバー時の色をゴールドに変更
-                  }
-                }}
+                sx={iconButtonStyle}
               >
                 <ArticleIcon sx={{ color: '#fff' }} />
               </IconButton>
             </Tooltip>
-            {/* <Tooltip title="Email" arrow>
-              <IconButton 
-                href="mailto:your-email@example.com" 
-                aria-label="Email"
-                sx={{ 
-                  '&:hover': {
-                    transform: 'scale(1.1)',
-                    transition: 'transform 0.3s ease-in-out',
-                    color: '#FFD700' // ホバー時の色をゴールドに変更
-                  }
-                }}
-              >
-                <EmailIcon sx={{ color: '#fff' }} />
-              </IconButton>
-            </Tooltip> */}
           </Box>
         </Box>
       </Box>

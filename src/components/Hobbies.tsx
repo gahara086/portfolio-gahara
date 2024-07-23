@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, CardMedia, Dialog, DialogTitle, DialogContent, Grow } from '@mui/material';
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import StarIcon from '@mui/icons-material/Star';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports'; // 麻雀のアイコン
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter'; // 筋トレのアイコン
+import StarIcon from '@mui/icons-material/Star'; // 成就や成果を示すアイコン
 
+// 達成内容に関する情報の型定義
 interface Achievement {
-  content: string;
-  description: string;
-  images: string[];
+  content: string; // 達成内容
+  description: string; // 詳細説明
+  images: string[]; // 画像のURLリスト
 }
 
+// 趣味に関する情報の型定義
 interface Hobby {
-  title: string;
-  icon: JSX.Element;
-  achievements: Achievement[];
+  title: string; // 趣味のタイトル
+  icon: JSX.Element; // アイコン
+  achievements: Achievement[]; // 達成項目のリスト
 }
 
+// 趣味のデータセット
 const hobbies: Hobby[] = [
   {
     title: '麻雀',
@@ -33,17 +36,6 @@ const hobbies: Hobby[] = [
       }
     ],
   },
-  // {
-  //   title: '競技プログラミング',
-  //   icon: <CodeIcon />,
-  //   achievements: [
-  //     {
-  //       content: 'atcoder 茶入 - 2023',
-  //       description: 'プログラミングコンテストサイト「atcoder」で初級者レベルに到達',
-  //       images: ['/Hobby/atcorder-account.png']
-  //     }
-  //   ],
-  // },
   {
     title: '筋トレ',
     icon: <FitnessCenterIcon />,
@@ -57,15 +49,18 @@ const hobbies: Hobby[] = [
   }
 ];
 
+// 趣味を表示するコンポーネント
 const Hobby: React.FC = () => {
-  const [open, setOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
+  const [open, setOpen] = useState(false); // 画像ダイアログの開閉状態
+  const [selectedImage, setSelectedImage] = useState(''); // 選択された画像のURL
 
+  // 画像をクリックした際にダイアログを開く処理
   const handleClickOpen = (image: string) => {
     setSelectedImage(image);
     setOpen(true);
   };
 
+  // ダイアログを閉じる処理
   const handleClose = () => {
     setOpen(false);
   };
@@ -74,9 +69,11 @@ const Hobby: React.FC = () => {
     <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
         <Paper elevation={6} sx={{ width: 1000, padding: 2 }}>
+          {/* セクションタイトル */}
           <Typography variant="h5" sx={{ textAlign: 'left', margin: 2, display: 'flex', alignItems: 'center' }}>
             <StarIcon sx={{ marginRight: 1 }} />趣味
           </Typography>
+          {/* 趣味データをマップして表示 */}
           {hobbies.map((hobby, index) => (
             <Box key={index} sx={{ margin: 2 }}>
               <Typography variant="h5" sx={{ marginBottom: 1, display: 'flex', alignItems: 'center' }}>
@@ -90,6 +87,7 @@ const Hobby: React.FC = () => {
                       <StarIcon />
                     </ListItemIcon>
                     <ListItemText primary={achievement.content} secondary={achievement.description} />
+                    {/* 画像がある場合は画像を表示し、クリックでダイアログを開く */}
                     {achievement.images.map((image, imageIndex) => (
                       <CardMedia
                         key={imageIndex}
@@ -107,6 +105,7 @@ const Hobby: React.FC = () => {
           ))}
         </Paper>
       </Grow>
+      {/* 画像ダイアログ */}
       <Dialog
         open={open}
         onClose={handleClose}
