@@ -29,7 +29,7 @@ const AboutMe = () => {
           }}
         >
           <Box sx={{ width: '60%', marginRight: 2 }}>
-            <Typography variant="h5" sx={{ mb: 1, fontWeight: 'medium' }}>
+          <Typography variant="h5" color="#20C0F3" sx={{ mb: 1, fontWeight: 'bold' }}>
               <PersonIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
               自己紹介
             </Typography>
@@ -40,29 +40,10 @@ const AboutMe = () => {
               開発側のリーダーとして、現在は週3日客先に常駐して仕様調整の業務を行っています。
               技術的な課題だけでなく、顧客の要望に応えることで、より良い製品作りを目指しています。
             </Typography>
-            {/* <Typography variant="body1" sx={{ mb: 2 }}>
-              また、自身の強みを発見するために、適正診断を実施しました。<br />
-              下記に診断結果を添付します。
-            </Typography>
-            <Button
-              variant="outlined"
-              startIcon={<PictureAsPdfIcon />}
-              sx={{
-                mb: 2,
-                '&:hover': {
-                  backgroundColor: '#e0f2f1',
-                  transform: 'scale(1.05)'
-                }
-              }}
-              href="/path/to/your/strengthsfinder_results.pdf"
-              target="_blank"
-            >
-              ストレングスファインダー診断結果
-            </Button> */}
           </Box>
           <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
           <Box sx={{ width: '40%' }}>
-            <Typography variant="h5" sx={{ mb: 3, fontWeight: 'medium' }}>
+            <Typography variant="h5" color="#20C0F3" sx={{ mb: 3, fontWeight: 'bold' }}>
               <AccountBoxIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
               プロフィール
             </Typography>

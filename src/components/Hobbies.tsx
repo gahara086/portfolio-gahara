@@ -70,13 +70,13 @@ const Hobby: React.FC = () => {
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
         <Paper elevation={6} sx={{ width: 1000, padding: 2 }}>
           {/* セクションタイトル */}
-          <Typography variant="h5" sx={{ textAlign: 'left', margin: 2, display: 'flex', alignItems: 'center' }}>
+          <Typography variant="h5" color="#20C0F3" sx={{ textAlign: 'left', margin: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 'bold' }}>
             <StarIcon sx={{ marginRight: 1 }} />趣味
           </Typography>
           {/* 趣味データをマップして表示 */}
           {hobbies.map((hobby, index) => (
             <Box key={index} sx={{ margin: 2 }}>
-              <Typography variant="h5" sx={{ marginBottom: 1, display: 'flex', alignItems: 'center' }}>
+              <Typography variant="h6" color="primary.main" sx={{ marginBottom: 1, display: 'flex', alignItems: 'center' }}>
                 {hobby.icon}
                 <span style={{ marginLeft: 10 }}>{hobby.title}</span>
               </Typography>

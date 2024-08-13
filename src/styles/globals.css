@@ -82,14 +82,14 @@
 html,
 body {
   background-color: #f0f0f0; /* 背景色の変更 */
-  background-image: url('/background.jpg'); /* 背景画像の設定 */
+  background-image: url("/background.jpg"); /* 背景画像の設定 */
   background-size: cover; /* 背景画像をカバーするように設定 */
   background-position: center; /* 背景画像を中央に配置 */
 }
 body {
   background-color: #f0f0f0;
   /* 背景色の変更 */
-  background-image: url('/background.jpg');
+  background-image: url("/background.jpg");
   /* 背景画像の設定 */
   background-size: cover;
   /* 背景画像をカバーするように設定 */

@@ -9,7 +9,7 @@ const iconButtonStyle = {
   '&:hover': {
     transform: 'scale(1.1)',
     transition: 'transform 0.3s ease-in-out',
-    color: '#FFD700' // ホバー時の色をゴールドに変更
+    // color: '#FFD700' // ホバー時の色をゴールドに変更
   }
 };
 
@@ -41,7 +41,7 @@ const HomePage = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // 背景の半透明色
+            // backgroundColor: 'rgba(0, 0, 0, 0.5)', // 背景の半透明色
             padding: '20px', // 内部の余白
             borderRadius: '10px', // 角の丸み
             boxShadow: '0 3px 6px rgba(0,0,0,0.23)', // 影を追加して立体感を出す
@@ -52,7 +52,7 @@ const HomePage = () => {
             src="/HomePage/icon.png" // アイコンの画像
             sx={{ width: 90, height: 90, mb: 2 }} // アイコンのサイズと下の余白
           />
-          <Typography variant="h4" sx={{ color: '#fff', mb: 1 }}>
+          <Typography variant="h4" sx={{ color: '#black', mb: 1 }}>
             菅原栄嗣
           </Typography>
           <Box sx={{ display: 'flex', gap: 2 }}>
@@ -63,7 +63,7 @@ const HomePage = () => {
                 aria-label="GitHub"
                 sx={iconButtonStyle}
               >
-                <GitHubIcon sx={{ color: '#fff' }} />
+                <GitHubIcon sx={{ color: '#black' }} />
               </IconButton>
             </Tooltip>
             {/* Qiitaのリンクボタン */}
@@ -73,7 +73,7 @@ const HomePage = () => {
                 aria-label="Qiita"
                 sx={iconButtonStyle}
               >
-                <ArticleIcon sx={{ color: '#fff' }} />
+                <ArticleIcon sx={{ color: '#black' }} />
               </IconButton>
             </Tooltip>
           </Box>

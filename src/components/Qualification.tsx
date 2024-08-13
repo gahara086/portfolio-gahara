@@ -30,8 +30,14 @@ const qualifications: Qualification[] = [
     icon: <ComputerTwoToneIcon />
   },
   {
-    title: 'アルゴリズム実技検定 中級',
+    title: 'Unity認定試験',
     year: '2024 - 2025',
+    status: 'planned',
+    icon: <AssignmentTurnedInIcon />
+  },
+  {
+    title: '統計検定',
+    year: '2025-2026',
     status: 'planned',
     icon: <AssignmentTurnedInIcon />
   },
@@ -40,14 +46,7 @@ const qualifications: Qualification[] = [
     year: '2025-2026',
     status: 'planned',
     icon: <AssignmentTurnedInIcon />
-  },
-  {
-    title: '普通自動車第一種運転免許',
-    year: '2019',
-    status: 'completed',
-    icon: <DriveEtaIcon />
-  }
-];
+  }];
 
 // 資格を表示するコンポーネント
 const Qualification: React.FC = () => {
@@ -71,7 +70,7 @@ const Qualification: React.FC = () => {
           }}
         >
           {/* セクションタイトル */}
-          <Typography variant="h5" sx={{ textAlign: 'left', margin: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="h5" color="#20C0F3" sx={{ textAlign: 'left', margin: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 'bold' }}>
             <EmojiEventsIcon /> 資格
           </Typography>
           {/* 資格リスト */}

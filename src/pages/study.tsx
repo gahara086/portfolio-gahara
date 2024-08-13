@@ -35,7 +35,7 @@ const hooksData: HookDetail[] = [
     useCase: 'APIからデータをフェッチし、データをコンポーネントにロードする際に使用。',
     link: '/study/useEffect',
     icon: UpdateIcon,
-    implement: false
+    implement: true
   },
   {
     name: 'useContext',

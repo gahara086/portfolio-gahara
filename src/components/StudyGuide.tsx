@@ -30,15 +30,20 @@ const studyGuide: Study[] = [
     icon: <ComputerIcon />,
     achievements: [
       {
-        content: 'ポートフォリオサイトの作成',
-        description: 'React, Next.jsを学習して、ポートフォリオサイトをデプロイ',
+        content: 'React, Next.js',
+        description: 'ポートフォリオサイト、React hooksサンプルアプリの作成',
+        images: [],
+        url: '/study' // ここにリンクを追加
+      },
+      {
+        content: 'Unity',
+        description: 'UnityのためにC#の基礎学習を実施中',
         images: [],
       },
       {
-        content: 'React hooksの理解',
-        description: 'React 16.8 で追加された新機能React hooksを理解するために、サンプルアプリを作成',
+        content: 'データ分析',
+        description: 'データ分析を学習するために、pythonでPandasライブラリの学習',
         images: [],
-        url: '/study' // ここにリンクを追加
       }
     ],
   },
@@ -48,13 +53,8 @@ const studyGuide: Study[] = [
     achievements: [
       {
         content: 'AtCoderProblems',
-        description: '様々なアルゴリズムを習得するために、AtCoderの過去問を実施',
-        images: ['/StudyGuide/atcorder/atcorder-problems.png']
-      },
-      {
-        content: 'atcoder 茶入 - 2023',
-        description: 'プログラミングコンテストサイト「atcoder」で初級者レベルに到達',
-        images: ['/StudyGuide/atcorder/atcorder-account.png']
+        description: '様々なアルゴリズムを習得するために、AtCoderの過去問を実施 プログラミングコンテストに挑戦',
+        images: ['/StudyGuide/atcorder/atcorder-problems.png', '/StudyGuide/atcorder/atcorder-account.png']
       }
     ],
   },
@@ -78,9 +78,9 @@ const studyGuide: Study[] = [
         description: 'コミュニケーションスキル及び開発フロー改善など、社会人としての振る舞いを学ぶために自己啓発本を通読',
         images: [
           '/StudyGuide/enlightenment/book1.jpg',
-          '/StudyGuide/enlightenment/book2.jpg',
+          '/StudyGuide/enlightenment/book2.jpeg',
           '/StudyGuide/enlightenment/book3.jpeg',
-          '/StudyGuide/enlightenment/book4.jpeg',
+          '/StudyGuide/enlightenment/book4.jpg',
         ]
       }
     ],
@@ -119,14 +119,14 @@ const StudyGuide: React.FC = () => {
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
         <Paper elevation={6} sx={{ maxWidth: paperWidth, width: '100%', padding: 2 }}>
           {/* セクションタイトル */}
-          <Typography variant="h5" sx={{ textAlign: 'left', margin: 2 }}>
+          <Typography variant="h5" color="#20C0F3" sx={{ textAlign: 'left', margin: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 'bold' }}>
             <LightbulbOutlinedIcon />
             個人学習
           </Typography>
           {/* 学習ガイドデータをマップして表示 */}
           {studyGuide.map((study, index) => (
             <Box key={index} sx={{ margin: 2 }}>
-              <Typography variant="h5" sx={{ marginBottom: 1, display: 'flex', alignItems: 'center' }}>
+              <Typography variant="h6" color="primary.main" sx={{ marginBottom: 1, display: 'flex', alignItems: 'center' }}>
                 {study.icon}
                 <span style={{ marginLeft: 10 }}>{study.title}</span>
               </Typography>
@@ -152,6 +152,7 @@ const StudyGuide: React.FC = () => {
                     {/* URLがある場合はリンクを表示 */}
                     {achievement.url && (
                       <Link href={achievement.url} target="_blank" rel="noopener">
+                        React hooks<br></br>
                         サンプルアプリ
                       </Link>
                     )}

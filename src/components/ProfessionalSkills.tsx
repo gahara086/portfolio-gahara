@@ -22,6 +22,7 @@ const programmingSkills: Skill[] = [
   { name: 'Python', level: 'Master', icon: StorageIcon },
   { name: 'C', level: 'Master', icon: StorageIcon },
   { name: 'C++', level: 'Advance', icon: StorageIcon },
+  { name: 'C#', level: 'Beginner', icon: StorageIcon },
   { name: 'Java', level: 'Beginner', icon: CodeIcon },
   { name: 'Algorithm', level: 'Advance', icon: AccountTreeIcon }
 ];
@@ -123,7 +124,7 @@ const ProfessionalSkills: React.FC = () => {
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
         <Paper elevation={6} sx={{ maxWidth: 1000, width: '100%', padding: 4, backgroundColor: '#fafafa' }}>
-          <Typography variant="h5" sx={{ textAlign: 'left', margin: 2 }}>
+          <Typography variant="h5" color="#20C0F3" sx={{ textAlign: 'left', margin: 2, fontWeight: 'bold' }}>
             <Icon component={ComputerIcon} sx={{ mr: 1, verticalAlign: 'bottom' }} />プログラミングスキル
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

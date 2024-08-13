@@ -76,7 +76,7 @@ const Education: React.FC = () => {
             backgroundColor: '#fafafa'
           }}
         >
-          <Typography variant="h5" sx={{ textAlign: 'center', margin: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="h5" color="#20C0F3" sx={{ textAlign: 'center', margin: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 'bold' }}>
             <SchoolIcon />
             学歴
           </Typography>
