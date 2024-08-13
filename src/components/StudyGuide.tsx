@@ -14,7 +14,7 @@ interface Achievement {
   content: string; // 達成内容
   description: string; // 詳細説明
   images: string[]; // 画像のURLリスト
-  urlLink?: string; // 任意のURL（例えば、サンプルアプリへのリンク）
+  urlLink?: string; // リンクとして表示する文字列
   url?: string; // 任意のURL（例えば、サンプルアプリへのリンク）
 }
 
