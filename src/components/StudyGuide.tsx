@@ -14,6 +14,7 @@ interface Achievement {
   content: string; // 達成内容
   description: string; // 詳細説明
   images: string[]; // 画像のURLリスト
+  urlLink?: string; // 任意のURL（例えば、サンプルアプリへのリンク）
   url?: string; // 任意のURL（例えば、サンプルアプリへのリンク）
 }
 
@@ -33,6 +34,7 @@ const studyGuide: Study[] = [
         content: 'React, Next.js',
         description: 'ポートフォリオサイト、React hooksサンプルアプリの作成',
         images: [],
+        urlLink: 'サンプルアプリ',
         url: '/study' // ここにリンクを追加
       },
       {
@@ -44,6 +46,8 @@ const studyGuide: Study[] = [
         content: 'データ分析',
         description: 'データ分析を学習するために、pythonでPandasライブラリの学習',
         images: [],
+        urlLink: '学習ブランチ',
+        url: 'https://github.com/gahara086/data-analysis-study' // ここにリンクを追加
       }
     ],
   },
@@ -152,8 +156,7 @@ const StudyGuide: React.FC = () => {
                     {/* URLがある場合はリンクを表示 */}
                     {achievement.url && (
                       <Link href={achievement.url} target="_blank" rel="noopener">
-                        React hooks<br></br>
-                        サンプルアプリ
+                        {achievement.urlLink}
                       </Link>
                     )}
                   </ListItem>
