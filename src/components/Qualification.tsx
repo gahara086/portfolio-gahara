@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, Grow } from '@mui/material';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty'; // 取得予定の資格アイコン
 import ComputerIcon from '@mui/icons-material/Computer'; // 基本情報技術者のアイコン
-import DriveEtaIcon from '@mui/icons-material/DriveEta'; // 普通自動車第一種運転免許のアイコン
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn'; // 資格のアイコン
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'; // 資格セクションのアイコン
 import ComputerTwoToneIcon from '@mui/icons-material/ComputerTwoTone'; // 応用情報技術者のアイコン
