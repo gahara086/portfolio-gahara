@@ -1,8 +1,8 @@
-
-# 概要
-転職活動用のポートフォリオになります。転職活動終了後、非公開にします。
+## 概要
+React, Next.js, Material-UIの学習用に作成しました。
 
 ## アプリイメージ
+下記URLからご確認ください。
 https://portfolio-gahara.vercel.app/
 
 
