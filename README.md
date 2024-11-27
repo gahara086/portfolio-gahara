@@ -1,5 +1,4 @@
-# ポートフォリオ
-
+# 概要
 このプロジェクトは、転職活動用のポートフォリオサイトです。転職活動が終了した後、サイトを非公開にします。
 
 ## アプリイメージ
@@ -13,7 +12,7 @@
 ## セットアップ方法
 1. リポジトリをクローンします。
    ```bash
-   git clone https://github.com/yourusername/my-portfolio.git
+   git clone https://github.com/gahara086/portfolio-gahara.git
    ```
 2. 必要な依存関係をインストールします。
    ```bash
@@ -26,8 +25,6 @@
    ```
 4. ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
 
-## デプロイ方法
-Vercelを使用してデプロイされています。ローカルでデプロイする場合は、以下のコマンドを使用してください。
 
 
 
