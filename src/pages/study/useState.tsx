@@ -1,29 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Container, TextField, Button, List, ListItem, ListItemText, IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { v4 as uuidv4 } from 'uuid';
 
 type Task = {
-  id: number;
+  id: string;
   text: string;
 };
 
 const TodoApp: React.FC = () => {
-  // useStateを用いてタスクのリストと新しいタスク入力の状態を管理します。
   const [tasks, setTasks] = useState<Task[]>([]);
   const [input, setInput] = useState('');
 
-  const handleAddTask = () => {
-    if (input) {
-      // 新しいタスクをtasks配列に追加し、入力フィールドをクリアします。
-      setTasks([...tasks, { id: Date.now(), text: input }]);
+  const handleAddTask = useCallback(() => {
+    if (input.trim()) {
+      setTasks(prevTasks => [...prevTasks, { id: uuidv4(), text: input.trim() }]);
       setInput('');
     }
-  };
+  }, [input]);
 
-  const handleDeleteTask = (taskId: number) => {
-    // 指定されたIDを持つタスクをフィルターにかけ、除外します。
-    setTasks(tasks.filter(task => task.id !== taskId));
-  };
+  const handleDeleteTask = useCallback((taskId: string) => {
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+  }, []);
+
+  const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleAddTask();
+    }
+  }, [handleAddTask]);
 
   return (
     <Container maxWidth="sm">
@@ -37,24 +42,36 @@ const TodoApp: React.FC = () => {
         このテキストが新しいタスクとして<strong>tasks</strong>に追加され、再レンダリングされます。<br />
       </Typography>
       <Typography variant="h6" gutterBottom>ToDoアプリ操作</Typography>
-      <TextField
-        label="新しいタスク"
-        variant="outlined"
-        fullWidth
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyPress={(e) => e.key === 'Enter' && handleAddTask()}
-      />
-      <Button onClick={handleAddTask} variant="contained" color="primary" style={{ marginTop: '10px' }}>
-        追加
-      </Button>
+      <form onSubmit={(e) => { e.preventDefault(); handleAddTask(); }}>
+        <TextField
+          label="新しいタスク"
+          variant="outlined"
+          fullWidth
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyPress={handleKeyPress}
+        />
+        <Button
+          type="submit"
+          onClick={handleAddTask}
+          variant="contained"
+          color="primary"
+          style={{ marginTop: '10px' }}
+          aria-label="タスクを追加"
+        >
+          追加
+        </Button>
+      </form>
       <List>
         {tasks.map((task) => (
-          <ListItem key={task.id} secondaryAction={
-            <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteTask(task.id)}>
-              <DeleteIcon />
-            </IconButton>
-          }>
+          <ListItem
+            key={task.id}
+            secondaryAction={
+              <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteTask(task.id)}>
+                <DeleteIcon />
+              </IconButton>
+            }
+          >
             <ListItemText primary={task.text} />
           </ListItem>
         ))}

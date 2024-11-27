@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Typography, Paper, Grow, Chip, Link } from '@mui/material';
-import { WorkOutline as WorkOutlineIcon } from '@mui/icons-material';
-import { LocalShipping as LocalShippingIcon, Tv as TvIcon } from '@mui/icons-material';
+import { WorkOutline as WorkOutlineIcon, LocalShipping as LocalShippingIcon, Tv as TvIcon } from '@mui/icons-material';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 import { Timeline, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from '@mui/lab';
 
 // 経験の型定義
 interface Experience {
+  id: string; // 一意の識別子
   title: string; // 職務タイトル
   period: string; // 職務期間
   role: string; // 役職
@@ -19,6 +19,7 @@ interface Experience {
 // 職務経験のデータ
 const experiences: Experience[] = [
   {
+    id: 'shipping-system',
     title: '港湾分野における情報処理システム開発',
     period: '2022年 10月 - 現在',
     role: '開発側リーダー',
@@ -31,6 +32,7 @@ const experiences: Experience[] = [
     icon: <LocalShippingIcon />
   },
   {
+    id: 'dtv-quality',
     title: 'AndroidOS搭載DTV 画質処理機能開発',
     period: '2019年 7月 - 2022年 9月',
     role: '開発職',
@@ -64,38 +66,30 @@ const WorkExperience: React.FC = () => {
             backgroundColor: '#fafafa'
           }}
         >
-          <Typography variant="h5" color="#20C0F3" sx={{  margin: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 'bold' }}>
+          <Typography variant="h5" color="#20C0F3" sx={{ margin: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 'bold' }}>
             <WorkOutlineIcon />
             職務経歴
           </Typography>
           <Timeline sx={{ [`& .${timelineItemClasses.root}:before`]: { flex: 0, padding: 0 } }}>
-            {/* 経験のリストをマップして表示 */}
-            {experiences.map((exp, index) => (
-              <TimelineItem key={index}>
+            {experiences.map((exp) => (
+              <TimelineItem key={exp.id}>
                 <TimelineSeparator>
-                  {/* タイムラインのドットとコネクタ */}
                   <TimelineDot />
-                  {index !== experiences.length - 1 && <TimelineConnector />}
+                  <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent sx={{ py: '12px', px: 2, textAlign: 'left' }}>
-                  {/* 職務タイトルとアイコン */}
                   <Typography variant="h5" color="primary.main" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     {exp.icon}
                     {exp.title}
                   </Typography>
-                  {/* 役職 */}
                   <Typography variant="subtitle1" color="textSecondary">{exp.role}</Typography>
-                  {/* 職務期間 */}
                   <Typography variant="subtitle2">{exp.period}</Typography>
-                  {/* 職務内容の説明 */}
                   <Typography>{exp.description}</Typography>
                   <Box sx={{ mt: 1, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                    {/* 使用技術のチップ */}
                     {exp.technologies.map((tech, i) => (
                       <Chip key={i} label={tech} variant="outlined" color="primary" />
                     ))}
                   </Box>
-                  {/* 関連リンク */}
                   {exp.links.map((link, i) => (
                     <Link key={i} href={link.url} target="_blank" rel="noopener" sx={{ mt: 1, display: 'block' }}>
                       {link.title}

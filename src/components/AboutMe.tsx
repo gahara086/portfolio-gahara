@@ -4,8 +4,16 @@ import PersonIcon from '@mui/icons-material/Person';
 import CakeIcon from '@mui/icons-material/Cake';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
-import AccountBoxIcon from '@mui/icons-material/AccountBox'; // プロフィールアイコン
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LandscapeIcon from '@mui/icons-material/Landscape';
+import SchoolIcon from '@mui/icons-material/School';
+
+const contactInfo = [
+  { icon: <CakeIcon />, label: '年齢', value: '29歳' },
+  { icon: <LandscapeIcon />, label: '出身地', value: '奈良県' },
+  { icon: <EmailIcon />, label: 'メールアドレス', value: 'gaharajob@gmail.com' },
+  { icon: <PhoneIcon />, label: '電話番号', value: '080-3845-1745' },
+];
 
 const AboutMe = () => {
   return (
@@ -23,14 +31,14 @@ const AboutMe = () => {
             maxWidth: 1000,
             width: '100%',
             display: 'flex',
-            flexDirection: 'row', // 列から行へ変更
+            flexDirection: 'row',
             p: 4,
             backgroundColor: '#fafafa'
           }}
         >
           <Box sx={{ width: '60%', marginRight: 2 }}>
-          <Typography variant="h5" color="#20C0F3" sx={{ mb: 1, fontWeight: 'bold' }}>
-              <PersonIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
+            <Typography variant="h5" color="#20C0F3" sx={{ mb: 1, fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: 1 }}>
+              <PersonIcon />
               自己紹介
             </Typography>
             <Typography variant="body1" sx={{ mb: 3 }}>
@@ -43,29 +51,16 @@ const AboutMe = () => {
           </Box>
           <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
           <Box sx={{ width: '40%' }}>
-            <Typography variant="h5" color="#20C0F3" sx={{ mb: 3, fontWeight: 'bold' }}>
+            <Typography variant="h5" color="#20C0F3" sx={{ mb: 3, fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: 1 }}>
               <AccountBoxIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
               プロフィール
             </Typography>
-            <Typography variant="h6" sx={{ mb: 1 }}>
-              {/* 基礎情報 */}
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
-              <CakeIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-              年齢: 29歳
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
-              <LandscapeIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-              出身地: 奈良県
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
-              <EmailIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-              メールアドレス: gaharajob@gmail.com
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
-              <PhoneIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-              電話番号: 080-3845-1745
-            </Typography>
+            {contactInfo.map((info, index) => (
+              <Typography variant="body1" sx={{ mb: 1 }} key={index}>
+                {info.icon}
+                &nbsp;{info.label}: {info.value}
+              </Typography>
+            ))}
           </Box>
         </Paper>
       </Grow>

@@ -29,14 +29,8 @@ const qualifications: Qualification[] = [
     icon: <ComputerTwoToneIcon />
   },
   {
-    title: 'Unity認定試験',
+    title: 'AWS認定ソリューションアーキテクト – アソシエイト',
     year: '2024 - 2025',
-    status: 'planned',
-    icon: <AssignmentTurnedInIcon />
-  },
-  {
-    title: '統計検定',
-    year: '2025-2026',
     status: 'planned',
     icon: <AssignmentTurnedInIcon />
   },

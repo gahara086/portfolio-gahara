@@ -1,30 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Box, Typography, Paper, List, ListItem, ListItemText, ListItemIcon, Link, Dialog, DialogContent, Grow } from '@mui/material';
-import Slider from 'react-slick'; // 画像スライダーライブラリ
-import CodeIcon from '@mui/icons-material/Code'; // 競技プログラミングのアイコン
-import StarIcon from '@mui/icons-material/Star'; // 成就や成果を示すアイコン
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'; // 読書のアイコン
-import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined'; // 個人学習のアイコン
-import ComputerIcon from '@mui/icons-material/Computer'; // フレームワーク習得のアイコン
-import "slick-carousel/slick/slick.css"; // スライダーのスタイル
-import "slick-carousel/slick/slick-theme.css"; // スライダーのテーマ
+import Slider from 'react-slick';
+import CodeIcon from '@mui/icons-material/Code';
+import StarIcon from '@mui/icons-material/Star';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
+import ComputerIcon from '@mui/icons-material/Computer';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-// 学習内容に関する情報の型定義
+// 学習内容の型定義
 interface Achievement {
-  content: string; // 達成内容
-  description: string; // 詳細説明
-  images: string[]; // 画像のURLリスト
-  urlLink?: string; // リンクとして表示する文字列
-  url?: string; // 任意のURL（例えば、サンプルアプリへのリンク）
+  content: string;
+  description: string;
+  images: string[];
+  urlLink?: string;
+  url?: string;
 }
 
 interface Study {
-  title: string; // 学習タイトル
-  icon: JSX.Element; // アイコン
-  achievements: Achievement[]; // 達成項目のリスト
+  title: string;
+  icon: JSX.Element;
+  achievements: Achievement[];
 }
 
-// 学習ガイドのデータ
 const studyGuide: Study[] = [
   {
     title: '新規フレームワークの習得',
@@ -35,19 +34,12 @@ const studyGuide: Study[] = [
         description: 'ポートフォリオサイト、React hooksサンプルアプリの作成',
         images: [],
         urlLink: 'サンプルアプリ',
-        url: '/study' // ここにリンクを追加
+        url: '/study' 
       },
       {
         content: 'Unity',
         description: 'UnityのためにC#の基礎学習を実施中',
         images: [],
-      },
-      {
-        content: 'データ分析',
-        description: 'データ分析を学習するために、pythonでPandasライブラリの学習',
-        images: [],
-        urlLink: '学習ブランチ',
-        url: 'https://github.com/gahara086/data-analysis-study' // ここにリンクを追加
       }
     ],
   },
@@ -91,24 +83,20 @@ const studyGuide: Study[] = [
   },
 ];
 
-// 学習ガイドを表示するコンポーネント
 const StudyGuide: React.FC = () => {
-  const [open, setOpen] = useState(false); // 画像ダイアログの開閉状態
-  const [selectedImage, setSelectedImage] = useState(''); // 選択された画像のURL
-  const paperWidth = 1000; // Paperコンポーネントの最大幅
+  const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
+  const paperWidth = 1000;
 
-  // 画像をクリックした際にダイアログを開く処理
-  const handleClickOpen = (image: string) => {
+  const handleClickOpen = useCallback((image: string) => {
     setSelectedImage(image);
     setOpen(true);
-  };
+  }, []);
 
-  // ダイアログを閉じる処理
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpen(false);
-  };
+  }, []);
 
-  // スライダーの設定
   const settings = {
     dots: true,
     infinite: true,
@@ -122,12 +110,10 @@ const StudyGuide: React.FC = () => {
     <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} timeout={1000}>
         <Paper elevation={6} sx={{ maxWidth: paperWidth, width: '100%', padding: 2 }}>
-          {/* セクションタイトル */}
           <Typography variant="h5" color="#20C0F3" sx={{ textAlign: 'left', margin: 2, display: 'flex', alignItems: 'center', gap: 1, fontWeight: 'bold' }}>
             <LightbulbOutlinedIcon />
             個人学習
           </Typography>
-          {/* 学習ガイドデータをマップして表示 */}
           {studyGuide.map((study, index) => (
             <Box key={index} sx={{ margin: 2 }}>
               <Typography variant="h6" color="primary.main" sx={{ marginBottom: 1, display: 'flex', alignItems: 'center' }}>
@@ -141,9 +127,8 @@ const StudyGuide: React.FC = () => {
                       <StarIcon />
                     </ListItemIcon>
                     <ListItemText primary={achievement.content} secondary={achievement.description} />
-                    {/* 画像がある場合はスライダーを表示 */}
                     <Box sx={{ width: 160, height: 90, marginLeft: 2 }}>
-                      {achievement.images.length > 0 ? (
+                      {achievement.images.length > 0 && (
                         <Slider {...settings}>
                           {achievement.images.map((image, imageIndex) => (
                             <div key={imageIndex} onClick={() => handleClickOpen(image)}>
@@ -151,11 +136,10 @@ const StudyGuide: React.FC = () => {
                             </div>
                           ))}
                         </Slider>
-                      ) : null}
+                      )}
                     </Box>
-                    {/* URLがある場合はリンクを表示 */}
                     {achievement.url && (
-                      <Link href={achievement.url} target="_blank" rel="noopener">
+                      <Link href={achievement.url} target="_blank" rel="noopener" sx={{ pl: 2 }}>
                         {achievement.urlLink}
                       </Link>
                     )}
@@ -166,7 +150,6 @@ const StudyGuide: React.FC = () => {
           ))}
         </Paper>
       </Grow>
-      {/* 画像ダイアログ */}
       <Dialog open={open} onClose={handleClose} maxWidth="md">
         <DialogContent>
           <img src={selectedImage} alt="Selected" style={{ width: '100%', height: 'auto' }} />
