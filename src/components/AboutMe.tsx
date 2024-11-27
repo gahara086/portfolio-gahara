@@ -6,7 +6,6 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LandscapeIcon from '@mui/icons-material/Landscape';
-import SchoolIcon from '@mui/icons-material/School';
 
 const contactInfo = [
   { icon: <CakeIcon />, label: '年齢', value: '29歳' },
